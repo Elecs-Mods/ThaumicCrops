@@ -1,7 +1,6 @@
 package elec332.thaumiccrops.thaumcraft;
 
 import elec332.thaumiccrops.thaumcraft.lib.lib;
-import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchItem;

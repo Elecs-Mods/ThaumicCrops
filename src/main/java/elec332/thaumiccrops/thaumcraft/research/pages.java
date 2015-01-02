@@ -1,28 +1,16 @@
 package elec332.thaumiccrops.thaumcraft.research;
 
-import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.registry.GameRegistry;
-import elec332.core.helper.stringHelper;
 import elec332.thaumiccrops.main.crops;
 import elec332.thaumiccrops.thaumcraft.ResearchHelper;
 import elec332.thaumiccrops.thaumcraft.lib.lib;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import thaumcraft.api.ThaumcraftApi;
-import thaumcraft.api.aspects.Aspect;
 import net.minecraft.util.ResourceLocation;
+import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.crafting.CrucibleRecipe;
-import thaumcraft.api.crafting.IArcaneRecipe;
-import thaumcraft.api.research.ResearchItem;
 import thaumcraft.api.research.ResearchPage;
-import thaumcraft.common.config.ConfigItems;
-import thaumcraft.common.config.ConfigResearch;
-
-import java.util.*;
 
 /**
  * Created by Elec332 on 1-1-2015.

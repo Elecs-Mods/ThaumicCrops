@@ -41,8 +41,9 @@ dependencies {
     //compile "some.group:artifact:version"
       
     // real examples
-    //compile 'com.mod-buildcraft:buildcraft:6.0.8:dev'  // adds buildcraft to the dev env
+    compile 'com.mod-buildcraft:buildcraft:6.0.8:dev'  // adds buildcraft to the dev env
     //compile 'com.googlecode.efficient-java-matrix-library:ejml:0.24' // adds ejml to the dev env
+	compile 'thaumcraft:Thaumcraft:1.7.10-4.2.2.1'
 
     // for more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
@@ -63,7 +64,7 @@ processResources
         // replace version and mcversion
         expand 'version':config.mod_version, 'mcversion':config.minecraft_version
     }
-        
+	
     // copy everything else, thats not the mcmod.info
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'

@@ -1,30 +1,24 @@
 package elec332.thaumiccrops.main;
 
-import com.jordsta.stuff.helpers.RegisterHelper;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.registry.GameRegistry;
-import elec332.core.helper.*;
+import elec332.core.helper.FileHelper;
+import elec332.core.helper.MCModInfo;
+import elec332.core.helper.modInfoHelper;
+import elec332.core.helper.stringHelper;
 import elec332.core.main.ElecCTab;
 import elec332.core.modBaseUtils.ModBase;
 import elec332.core.modBaseUtils.modInfo;
 import elec332.core.proxies.CommonProxy;
-import elec332.core.util.blocks.baseCrop;
 import elec332.core.util.items.baseItem;
 import elec332.core.util.items.baseSeed;
 import elec332.thaumiccrops.thaumcraft.thaumcraft;
-import elec332.z_testmod.test.main.ETestMod;
-import net.minecraft.block.Block;
 import net.minecraft.client.resources.I18n;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.config.Configuration;
-import net.minecraftforge.oredict.OreDictionary;
-import thaumcraft.api.research.ResearchCategories;
 
 import java.util.ArrayList;
 
