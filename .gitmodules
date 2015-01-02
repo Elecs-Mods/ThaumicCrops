@@ -1,0 +1,3 @@
+[submodule "api/thaumcraft"]
+	path = api/thaumcraft
+	url = git://github.com/Azanor/thaumcraft-api.git
