@@ -1,13 +1,13 @@
-package elec332.z_testmod.crops.thaumcraft.research;
+package elec332.thaumiccrops.thaumcraft.research;
 
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 import elec332.core.helper.stringHelper;
-import elec332.z_testmod.crops.main.crops;
-import elec332.z_testmod.crops.thaumcraft.ResearchHelper;
-import elec332.z_testmod.crops.thaumcraft.lib.lib;
+import elec332.thaumiccrops.main.crops;
+import elec332.thaumiccrops.thaumcraft.ResearchHelper;
+import elec332.thaumiccrops.thaumcraft.lib.lib;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import thaumcraft.api.ThaumcraftApi;

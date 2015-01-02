@@ -1,6 +1,6 @@
-package elec332.z_testmod.crops.thaumcraft;
+package elec332.thaumiccrops.thaumcraft;
 
-import elec332.z_testmod.crops.thaumcraft.lib.lib;
+import elec332.thaumiccrops.thaumcraft.lib.lib;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import thaumcraft.api.aspects.AspectList;

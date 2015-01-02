@@ -1,4 +1,4 @@
-package elec332.z_testmod.crops.init;
+package elec332.thaumiccrops.init;
 
 import elec332.z_testmod.test.main.crop;
 import net.minecraft.block.Block;

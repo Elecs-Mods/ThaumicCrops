@@ -1,4 +1,4 @@
-package elec332.z_testmod.crops.thaumcraft.lib;
+package elec332.thaumiccrops.thaumcraft.lib;
 
 /**
  * Created by Elec332 on 1-1-2015.

@@ -1,7 +1,7 @@
-package elec332.z_testmod.crops.thaumcraft;
+package elec332.thaumiccrops.thaumcraft;
 
-import elec332.z_testmod.crops.thaumcraft.research.pages;
-import elec332.z_testmod.crops.thaumcraft.research.tab;
+import elec332.thaumiccrops.thaumcraft.research.pages;
+import elec332.thaumiccrops.thaumcraft.research.tab;
 
 /**
  * Created by Elec332 on 1-1-2015.

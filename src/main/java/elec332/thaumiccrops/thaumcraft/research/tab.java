@@ -1,6 +1,6 @@
-package elec332.z_testmod.crops.thaumcraft.research;
+package elec332.thaumiccrops.thaumcraft.research;
 
-import elec332.z_testmod.crops.thaumcraft.lib.lib;
+import elec332.thaumiccrops.thaumcraft.lib.lib;
 import net.minecraft.util.ResourceLocation;
 import thaumcraft.api.research.ResearchCategories;
 

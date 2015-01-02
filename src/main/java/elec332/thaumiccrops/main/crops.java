@@ -1,4 +1,4 @@
-package elec332.z_testmod.crops.main;
+package elec332.thaumiccrops.main;
 
 import com.jordsta.stuff.helpers.RegisterHelper;
 import cpw.mods.fml.common.Mod;
@@ -15,7 +15,7 @@ import elec332.core.proxies.CommonProxy;
 import elec332.core.util.blocks.baseCrop;
 import elec332.core.util.items.baseItem;
 import elec332.core.util.items.baseSeed;
-import elec332.z_testmod.crops.thaumcraft.thaumcraft;
+import elec332.thaumiccrops.thaumcraft.thaumcraft;
 import elec332.z_testmod.test.main.ETestMod;
 import net.minecraft.block.Block;
 import net.minecraft.client.resources.I18n;

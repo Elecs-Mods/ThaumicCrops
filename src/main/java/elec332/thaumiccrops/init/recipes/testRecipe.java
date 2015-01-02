@@ -1,4 +1,4 @@
-package elec332.z_testmod.crops.init.recipes;
+package elec332.thaumiccrops.init.recipes;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
