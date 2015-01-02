@@ -21,6 +21,16 @@ public class cropBlock extends baseCrop {
     @SideOnly(Side.CLIENT)
     private IIcon[] icon;
 
+    @SideOnly(Side.CLIENT)
+    public IIcon getIcon(int side, int meta)
+    {
+        if (meta < 0 || meta > 7)
+        {
+            meta = 7;
+        }
+
+        return this.icon[meta];
+    }
 
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister IIconRegister)
