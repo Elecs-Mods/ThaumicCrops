@@ -1,6 +1,6 @@
 package elec332.thaumiccrops.thaumcraft;
 
-import elec332.thaumiccrops.init.recipes.crucibleRecipes;
+import elec332.thaumiccrops.thaumcraft.recipes.crucibleRecipes;
 import elec332.thaumiccrops.thaumcraft.research.pages;
 import elec332.thaumiccrops.thaumcraft.research.tab;
 

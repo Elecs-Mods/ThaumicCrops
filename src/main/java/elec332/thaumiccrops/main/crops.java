@@ -15,10 +15,15 @@ import elec332.core.modBaseUtils.modInfo;
 import elec332.core.proxies.CommonProxy;
 import elec332.core.util.items.baseItem;
 import elec332.core.util.items.baseSeed;
+import elec332.thaumiccrops.cropstuff.seedItem;
+import elec332.thaumiccrops.thaumcraft.TChelper;
 import elec332.thaumiccrops.thaumcraft.thaumcraft;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.config.Configuration;
+import thaumcraft.api.ThaumcraftApi;
+import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.aspects.AspectList;
 
 import java.util.ArrayList;
 
@@ -31,8 +36,9 @@ public class crops extends ModBase{
     public static Configuration config;
     public static String ModID;
 
-    static String[] crops = {"aaer", "aaqua", "aignis", "aordo"};
-    public static ArrayList cropList = stringHelper.convertStringArrayToArraylist(crops);
+    //static String[] crops = Aspect.a  //{"aaer", "aaqua", "aignis", "aordo"};
+    public static ArrayList primAspects = TChelper.getAspectTag(Aspect.getPrimalAspects());
+    public static ArrayList cropList = primAspects;
 
     @SidedProxy(clientSide = modInfo.CLIENTPROXY, serverSide = modInfo.COMMONPROXY)
     public static CommonProxy proxy;
@@ -53,7 +59,7 @@ public class crops extends ModBase{
             //Item Item = new baseSeed("aaer", modName, block);
            // block.seed(Item);
             //new baseItem()
-            Item item = new baseSeed(cropName, modName, new baseItem(cropName + "crop", ElecCTab.ElecTab, modName).setTextureName(modName + ":" + cropName + ".crop"));
+            Item item = new seedItem(cropName, modName, new baseItem(cropName + "crop", ElecCTab.ElecTab, modName).setTextureName(modName + ":" + cropName + ".crop"));
 
             //registerHelper.registerItem(Item, "aaer");
             //registerHelper.registerBlock(block, "aaerCrop");

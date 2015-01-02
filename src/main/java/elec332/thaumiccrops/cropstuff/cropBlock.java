@@ -1,4 +1,4 @@
-package elec332.thaumiccrops.init;
+package elec332.thaumiccrops.cropstuff;
 
 
 import cpw.mods.fml.relauncher.Side;
@@ -21,6 +21,7 @@ public class cropBlock extends baseCrop {
     @SideOnly(Side.CLIENT)
     private IIcon[] icon;
 
+
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister IIconRegister)
     {
@@ -28,7 +29,7 @@ public class cropBlock extends baseCrop {
 
         for (int i = 0; i < this.icon.length - 1; ++i)
         {
-            this.icon[i] = IIconRegister.registerIcon("AspectCrop" + "_stage_" + i);
+            this.icon[i] = IIconRegister.registerIcon("thaumiccrops:AspectCrop" + "_stage_" + i);
         }
         this.icon[7] = IIconRegister.registerIcon(this.getTextureName() + "_stage_" + 7);
     }
