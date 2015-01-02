@@ -1,5 +1,6 @@
 package elec332.thaumiccrops.thaumcraft;
 
+import elec332.thaumiccrops.init.recipes.crucibleRecipes;
 import elec332.thaumiccrops.thaumcraft.research.pages;
 import elec332.thaumiccrops.thaumcraft.research.tab;
 
@@ -8,6 +9,8 @@ import elec332.thaumiccrops.thaumcraft.research.tab;
  */
 public class thaumcraft {
     public static void init(){
+        crucibleRecipes.init();
+
         tab.createTCTab();
         pages.init();
     }

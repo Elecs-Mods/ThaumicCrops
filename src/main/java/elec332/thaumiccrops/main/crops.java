@@ -31,6 +31,9 @@ public class crops extends ModBase{
     public static Configuration config;
     public static String ModID;
 
+    static String[] crops = {"aaer", "aaqua", "aignis", "aordo"};
+    public static ArrayList cropList = stringHelper.convertStringArrayToArraylist(crops);
+
     @SidedProxy(clientSide = modInfo.CLIENTPROXY, serverSide = modInfo.COMMONPROXY)
     public static CommonProxy proxy;
 
@@ -41,8 +44,7 @@ public class crops extends ModBase{
     public void preInit(FMLPreInitializationEvent event) {
         this.ModID = modInfoHelper.getModID(event);
         this.config = new Configuration(FileHelper.getConfigFileElec(event));
-        String[] crops = {"aaer", "aaqua", "aignis", "aordo"};
-        ArrayList cropList = stringHelper.convertStringArrayToArraylist(crops);
+
         for (int i = 0; i < cropList.size(); i++) {
             String cropName = (String) cropList.get(i);
             String modName = ModID;
