@@ -14,16 +14,11 @@ import elec332.core.modBaseUtils.ModBase;
 import elec332.core.modBaseUtils.modInfo;
 import elec332.core.proxies.CommonProxy;
 import elec332.core.util.items.baseItem;
-import elec332.core.util.items.baseSeed;
 import elec332.thaumiccrops.cropstuff.seedItem;
 import elec332.thaumiccrops.thaumcraft.TChelper;
 import elec332.thaumiccrops.thaumcraft.thaumcraft;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.item.Item;
 import net.minecraftforge.common.config.Configuration;
-import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
-import thaumcraft.api.aspects.AspectList;
 
 import java.util.ArrayList;
 
@@ -35,16 +30,8 @@ public class crops extends ModBase{
 
     public static Configuration config;
     public static String ModID;
-
-    static String[] agentString = {"agent1", "aaqua", "aignis", "aordo"};
-    public static ArrayList<String> agents = stringHelper.convertStringArrayToArraylist(agentString);
-
-    @SuppressWarnings("unchecked")
-    public static ArrayList<String> primAspects = TChelper.getAspectTag(Aspect.getPrimalAspects());
-    @SuppressWarnings("unchecked")
-    public static ArrayList<String> compoundAspects = TChelper.getAspectTag(Aspect.getCompoundAspects());
-    @SuppressWarnings("unchecked")
-    public static ArrayList<String> cropList = stringHelper.mergeArrays(primAspects, compoundAspects);
+    static String[] miscItemsString = {"amber", "diamond", "lapis", "air", "ignis", "aqua", "earth", "order", "entropy"};
+    public static ArrayList<String> miscItems = stringHelper.convertStringArrayToArraylist(miscItemsString);
     public static ArrayList<String> T1Aspects = new ArrayList<String>();
     public static ArrayList<String> T2Aspects = new ArrayList<String>();
     public static ArrayList<String> T3Aspects = new ArrayList<String>();
@@ -53,17 +40,14 @@ public class crops extends ModBase{
     public static ArrayList<String> T6Aspects = new ArrayList<String>();
     public static ArrayList<String> T7Aspects = new ArrayList<String>();
 
-    void createArrayLists(){
-        for (int i = 0; i < 10; i++) {
-            this.T1Aspects.add(compoundAspects.get(i));
-        }
-        this.T2Aspects = stringHelper.convertStringArrayToArraylist(new String[]{"bestia", "fames", "herba", "iter", "limus", "metallum", "mortuus", "praecantatio", "sano", "tenebrae", "vinculum", "volatus"});
-        this.T3Aspects = stringHelper.convertStringArrayToArraylist(new String[]{"alienis", "arbor", "auram", "corpus", "exanimis", "spiritus", "vitium"});
-        this.T4Aspects = stringHelper.convertStringArrayToArraylist(new String[]{"cognitio", "sensus"});
-        this.T5Aspects.add("humanus");
-        this.T6Aspects = stringHelper.convertStringArrayToArraylist(new String[]{"instrumentum", "lucrum", "messis", "perfodio"});
-        this.T7Aspects = stringHelper.convertStringArrayToArraylist(new String[]{"fabrico", "machina", "meto", "pannus", "telum", "tutamen"});
-    }
+    @SuppressWarnings("unchecked")
+    public static ArrayList<String> primAspects = TChelper.getAspectTag(Aspect.getPrimalAspects());
+
+    @SuppressWarnings("unchecked")
+    public static ArrayList<String> compoundAspects = TChelper.getAspectTag(Aspect.getCompoundAspects());
+
+    @SuppressWarnings("unchecked")
+    public static ArrayList<String> cropList = stringHelper.mergeArrays(primAspects, compoundAspects);
 
     @SidedProxy(clientSide = modInfo.CLIENTPROXY, serverSide = modInfo.COMMONPROXY)
     public static CommonProxy proxy;
@@ -75,32 +59,18 @@ public class crops extends ModBase{
     public void preInit(FMLPreInitializationEvent event) {
         this.ModID = modInfoHelper.getModID(event);
         this.config = new Configuration(FileHelper.getConfigFileElec(event));
-        createArrayLists();
+        createTCArrayLists();
         for (int i = 0; i < cropList.size(); i++) {
             String cropName = cropList.get(i);
             String modName = ModID;
-
-            //blocks block = new blocks();
-            //Item Item = new baseSeed("aaer", modName, block);
-           // block.seed(Item);
-            //new baseItem()
-            Item item = new seedItem(cropName, modName, new baseItem(cropName + "crop", ElecCTab.ElecTab, modName).setTextureName(modName + ":" + cropName + ".crop"));
-
-            //registerHelper.registerItem(Item, "aaer");
-            //registerHelper.registerBlock(block, "aaerCrop");
-            //GameRegistry.addRecipe(new ItemStack(items.aaerSeed, 9), new Object[]{
-            //        "GGG", "GGG", "GGG", 'G', Blocks.dirt
-            //});
-
-
-
+            new seedItem(cropName, modName, new baseItem(cropName + "crop", ElecCTab.ElecTab, modName).setTextureName(modName + ":" + cropName + ".crop"));
         }
         for (int i = 1; i < 8; i++) {
             new baseItem("agent" + i, null, event);
         }
-
-        //t = new baseCrop("aaer", ropItem, ETestMod.cropItem, "crops");
-        //Item q = new test("aaer", "crops");
+        for (int i = 0; i < miscItems.size(); i++) {
+            new baseItem(miscItems.get(i)+"Shard", null, event);
+        }
 
         MCModInfo.CreateMCModInfoElec(event, "Crops!",
                 "-", "assets/elec332/logo.png", new String[]{"Elec332"});
@@ -108,18 +78,25 @@ public class crops extends ModBase{
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
+        System.out.println(event.getModState());
         loadConfiguration(config);
     }
 
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent event) {
+        System.out.println(event.getModState());
         thaumcraft.init();
-        localize();
     }
 
-    //mods.thaumcraft.Infusion.addRecipe("T1SEEDS", <minecraft:wheat_seeds>, [ignisCrop, ignisCrop, ignisCrop, ignisCrop, perditioCrop, perditioCrop, perditioCrop, perditioCrop, agent1, agent1], "herba 15, messis 15, ordo 20, praecantatio 20", gelumSeed, 3);
-    public static void localize(){
-        I18n.format("en_US", "tc.research_category.THAUMCROPS", "Thaumic Crops");
+    void createTCArrayLists() {
+        for (int i = 0; i < 10; i++) {
+            this.T1Aspects.add(compoundAspects.get(i));
+        }
+        this.T2Aspects = stringHelper.convertStringArrayToArraylist(new String[]{"bestia", "fames", "herba", "iter", "limus", "metallum", "mortuus", "praecantatio", "sano", "tenebrae", "vinculum", "volatus"});
+        this.T3Aspects = stringHelper.convertStringArrayToArraylist(new String[]{"alienis", "arbor", "auram", "corpus", "exanimis", "spiritus", "vitium"});
+        this.T4Aspects = stringHelper.convertStringArrayToArraylist(new String[]{"cognitio", "sensus"});
+        this.T5Aspects.add("humanus");
+        this.T6Aspects = stringHelper.convertStringArrayToArraylist(new String[]{"instrumentum", "lucrum", "messis", "perfodio"});
+        this.T7Aspects = stringHelper.convertStringArrayToArraylist(new String[]{"fabrico", "machina", "meto", "pannus", "telum", "tutamen"});
     }
-
 }

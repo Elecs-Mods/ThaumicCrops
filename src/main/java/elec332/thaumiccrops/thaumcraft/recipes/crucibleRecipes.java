@@ -16,6 +16,7 @@ import java.util.HashMap;
  * Created by Elec332 on 2-1-2015.
  */
 public class crucibleRecipes {
+
     @SuppressWarnings("unchecked")
     public static HashMap<String, CrucibleRecipe> CrucibleRecipes = new HashMap();
 
@@ -28,7 +29,5 @@ public class crucibleRecipes {
         for (int i = 2; i < 8; i++) {
             CrucibleRecipes.put("agent"+i, ThaumcraftApi.addCrucibleRecipe(lib.AGENT, new ItemStack(GameRegistry.findItem(crops.ModID, "agent"+i)), new ItemStack(GameRegistry.findItem(crops.ModID, "agent"+(i-1))), (new AspectList()).merge(Aspect.MAGIC, 10).merge(Aspect.ORDER, 10).merge(Aspect.SLIME, 10)) );
         }
-
-
     }
 }

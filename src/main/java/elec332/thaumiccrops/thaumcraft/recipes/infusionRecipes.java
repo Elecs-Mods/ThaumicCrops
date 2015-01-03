@@ -2,7 +2,6 @@ package elec332.thaumiccrops.thaumcraft.recipes;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import elec332.thaumiccrops.main.crops;
-import elec332.thaumiccrops.thaumcraft.lib.lib;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import thaumcraft.api.ThaumcraftApi;
@@ -20,8 +19,6 @@ public class infusionRecipes {
 
     @SuppressWarnings("unchecked")
     public static HashMap<String, InfusionRecipe> InfusionRecipes = new HashMap();
-
-    static ItemStack seed = new ItemStack(Items.wheat_seeds);
 
     public static void init(){
         makeRecipesForSeeds(crops.T1Aspects, 1);
@@ -44,7 +41,7 @@ public class infusionRecipes {
             ItemStack compoundSeed2 = new ItemStack(GameRegistry.findItem(crops.ModID, Aspect.getComponents()[1].getTag()+"crop"));
             ItemStack thisItem = new ItemStack(GameRegistry.findItem(crops.ModID, aspect + "seed"));
             ItemStack agent = new ItemStack(GameRegistry.findItem(crops.ModID, "agent"+Tier));
-            InfusionRecipes.put(aspect, ThaumcraftApi.addInfusionCraftingRecipe("T"+Tier+"SEED", thisItem, Instability, (new AspectList()).add(Aspect.PLANT, aspectNumber1).add(Aspect.CROP, aspectNumber1).add(Aspect.ORDER, aspectNumber2).add(Aspect.MAGIC, aspectNumber2), seed, new ItemStack[]{compoundSeed1, compoundSeed1, compoundSeed1, compoundSeed2, compoundSeed2, compoundSeed2, agent, agent}));
+            InfusionRecipes.put(aspect, ThaumcraftApi.addInfusionCraftingRecipe("T"+Tier+"SEED", thisItem, Instability, (new AspectList()).add(Aspect.PLANT, aspectNumber1).add(Aspect.CROP, aspectNumber1).add(Aspect.ORDER, aspectNumber2).add(Aspect.MAGIC, aspectNumber2), new ItemStack(Items.wheat_seeds), new ItemStack[]{compoundSeed1, compoundSeed1, compoundSeed1, compoundSeed2, compoundSeed2, compoundSeed2, agent, agent}));
         }
     }
 }
