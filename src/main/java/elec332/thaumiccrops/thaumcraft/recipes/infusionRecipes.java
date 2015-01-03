@@ -24,7 +24,13 @@ public class infusionRecipes {
     static ItemStack seed = new ItemStack(Items.wheat_seeds);
 
     public static void init(){
-        makeRecipesForSeeds(crops.T1Aspects, 3, 0);
+        makeRecipesForSeeds(crops.T1Aspects, 10, 0);
+        makeRecipesForSeeds(crops.T2Aspects, 11, 5);
+        makeRecipesForSeeds(crops.T3Aspects, 12, 10);
+        makeRecipesForSeeds(crops.T4Aspects, 13, 15);
+        makeRecipesForSeeds(crops.T5Aspects, 14, 20);
+        makeRecipesForSeeds(crops.T6Aspects, 15, 25);
+        makeRecipesForSeeds(crops.T7Aspects, 16, 30);
     }
 
     static void makeRecipesForSeeds(ArrayList<String> aspectList, int Instability, int aspectNumber){

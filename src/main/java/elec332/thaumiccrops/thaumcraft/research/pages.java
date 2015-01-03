@@ -35,9 +35,39 @@ public class pages {
             research.addPage(new ResearchPage(crucibleRecipes.CrucibleRecipes.get("agent"+i)));
         }
 
-        research = new ElecResearch(lib.T1SEED, StringToAspectList("messis 50, gelum 50, motus 50, potentia 50, vacuos 50, victus 50"), new ResourceLocation(crops.ModID.toLowerCase(), "textures/items/aordo.crop.png"), 5, 4, 2);
+        research = new ElecResearch(lib.T1SEED, StringToAspectList("messis 50, gelum 50, motus 50, potentia 50, vacuos 50, victus 50"), new ResourceLocation(crops.ModID.toLowerCase(), "textures/items/aordo.crop.png"), 5, 4, 1);
         for (int i = 0; i < crops.T1Aspects.size(); i++) {
             research.addPage(new ResearchPage(infusionRecipes.InfusionRecipes.get(crops.T1Aspects.get(i))));
+        }
+
+        research = new ElecResearch(lib.T2SEED, StringToAspectList("messis 50, bestia 50, herba 50, limus 50, mortuus 50, sano 50, vinculum 50"), new ResourceLocation(crops.ModID.toLowerCase(), "textures/items/messis.crop.png"), 5, 5, 1);
+        for (int i = 0; i < crops.T2Aspects.size(); i++) {
+            research.addPage(new ResearchPage(infusionRecipes.InfusionRecipes.get(crops.T2Aspects.get(i))));
+        }
+
+        research = new ElecResearch("T3SEED", StringToAspectList("messis 50, alienis 50, arbor 50, auram 50, corpus 50, exanimis 50, spiritus 50"), new ResourceLocation(crops.ModID.toLowerCase(), "textures/items/messis.crop.png"), 5, 6, 2);
+        for (int i = 0; i < crops.T3Aspects.size(); i++) {
+            research.addPage(new ResearchPage(infusionRecipes.InfusionRecipes.get(crops.T3Aspects.get(i))));
+        }
+
+        research = new ElecResearch("T4SEED", StringToAspectList("messis 50, cognitio 50, sensus 50"), new ResourceLocation(crops.ModID.toLowerCase(), "textures/items/messis.crop.png"), 5, 7, 2);
+        for (int i = 0; i < crops.T4Aspects.size(); i++) {
+            research.addPage(new ResearchPage(infusionRecipes.InfusionRecipes.get(crops.T4Aspects.get(i))));
+        }
+
+        research = new ElecResearch("T5SEED", StringToAspectList("messis 50, humanus 50"), new ResourceLocation(crops.ModID.toLowerCase(), "textures/items/messis.crop.png"), 5, 8, 3);
+        for (int i = 0; i < crops.T5Aspects.size(); i++) {
+            research.addPage(new ResearchPage(infusionRecipes.InfusionRecipes.get(crops.T5Aspects.get(i))));
+        }
+
+        research = new ElecResearch("T6SEED", StringToAspectList("messis 50, instrumentum 50, lucrum 50, messis 50, perfodio 50"), new ResourceLocation(crops.ModID.toLowerCase(), "textures/items/messis.crop.png"), 5, 9, 3);
+        for (int i = 0; i < crops.T6Aspects.size(); i++) {
+            research.addPage(new ResearchPage(infusionRecipes.InfusionRecipes.get(crops.T6Aspects.get(i))));
+        }
+
+        research = new ElecResearch("T7SEED", StringToAspectList("messis 50, fabrico 50, machina 50, meto 50, pannus 50, telum 50, tutamen 50"), new ResourceLocation(crops.ModID.toLowerCase(), "textures/items/messis.crop.png"), 5, 10, 3);
+        for (int i = 0; i < crops.T7Aspects.size(); i++) {
+            research.addPage(new ResearchPage(infusionRecipes.InfusionRecipes.get(crops.T7Aspects.get(i))));
         }
     }
 

@@ -46,11 +46,23 @@ public class crops extends ModBase{
     @SuppressWarnings("unchecked")
     public static ArrayList<String> cropList = stringHelper.mergeArrays(primAspects, compoundAspects);
     public static ArrayList<String> T1Aspects = new ArrayList<String>();
+    public static ArrayList<String> T2Aspects = new ArrayList<String>();
+    public static ArrayList<String> T3Aspects = new ArrayList<String>();
+    public static ArrayList<String> T4Aspects = new ArrayList<String>();
+    public static ArrayList<String> T5Aspects = new ArrayList<String>();
+    public static ArrayList<String> T6Aspects = new ArrayList<String>();
+    public static ArrayList<String> T7Aspects = new ArrayList<String>();
 
     void createArrayLists(){
         for (int i = 0; i < 10; i++) {
             this.T1Aspects.add(compoundAspects.get(i));
         }
+        this.T2Aspects = stringHelper.convertStringArrayToArraylist(new String[]{"bestia", "fames", "herba", "iter", "limus", "metallum", "mortuus", "praecantatio", "sano", "tenebrae", "vinculum", "volatus"});
+        this.T3Aspects = stringHelper.convertStringArrayToArraylist(new String[]{"alienis", "arbor", "auram", "corpus", "exanimis", "spiritus", "vitium"});
+        this.T4Aspects = stringHelper.convertStringArrayToArraylist(new String[]{"cognitio", "sensus"});
+        this.T5Aspects.add("humanus");
+        this.T6Aspects = stringHelper.convertStringArrayToArraylist(new String[]{"instrumentum", "lucrum", "messis", "perfodio"});
+        this.T7Aspects = stringHelper.convertStringArrayToArraylist(new String[]{"fabrico", "machina", "meto", "pannus", "telum", "tutamen"});
     }
 
     @SidedProxy(clientSide = modInfo.CLIENTPROXY, serverSide = modInfo.COMMONPROXY)

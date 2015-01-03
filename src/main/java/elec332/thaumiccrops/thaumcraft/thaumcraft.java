@@ -16,8 +16,6 @@ import java.util.ArrayList;
  */
 public class thaumcraft {
 
-
-
     public static void init(){
         crucibleRecipes.init();
         arcaneRecipes.init();
