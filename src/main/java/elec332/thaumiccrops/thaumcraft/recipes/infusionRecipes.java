@@ -26,8 +26,10 @@ public class infusionRecipes {
         for (int i = 0; i < crops.T1Aspects.size(); i++) {
             String aspect = crops.T1Aspects.get(i);
             Aspect Aspect = thaumcraft.api.aspects.Aspect.getAspect(aspect);
+            ItemStack compoundSeed1 = new ItemStack(GameRegistry.findItem(crops.ModID, Aspect.getComponents()[0].getTag()+"crop"));
+            ItemStack compoundSeed2 = new ItemStack(GameRegistry.findItem(crops.ModID, Aspect.getComponents()[1].getTag()+"crop"));
             ItemStack thisItem = new ItemStack(GameRegistry.findItem(crops.ModID, aspect + "seed"));
-            InfusionRecipes.put(aspect, ThaumcraftApi.addInfusionCraftingRecipe(lib.T1SEED, thisItem, 3, (new AspectList()).add(Aspect.PLANT, 15).add(Aspect.CROP, 15).add(Aspect.ORDER, 20).add(Aspect.MAGIC, 20), seed, new ItemStack[]{GameRegistry.findItemStack(crops.ModID, Aspect.getComponents()[0].getTag()+"seed", 3), GameRegistry.findItemStack(crops.ModID, Aspect.getComponents()[1].getTag() + "seed", 3)}));
+            InfusionRecipes.put(aspect, ThaumcraftApi.addInfusionCraftingRecipe(lib.T1SEED, thisItem, 3, (new AspectList()).add(Aspect.PLANT, 15).add(Aspect.CROP, 15).add(Aspect.ORDER, 20).add(Aspect.MAGIC, 20), seed, new ItemStack[]{compoundSeed1, compoundSeed1, compoundSeed1, compoundSeed2, compoundSeed2, compoundSeed2}));
         }
     }
 }
