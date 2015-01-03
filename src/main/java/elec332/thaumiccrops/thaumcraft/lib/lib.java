@@ -7,6 +7,4 @@ public class lib {
     public static String TCTAB = "THAUMCROPS";
     public static String PRIMALSEEDS = "PRIMALASPSEEDS";
     public static String AGENT = "AGENT";
-    public static String T1SEED = "T1SEED";
-    public static String T2SEED = "T2SEED";
 }

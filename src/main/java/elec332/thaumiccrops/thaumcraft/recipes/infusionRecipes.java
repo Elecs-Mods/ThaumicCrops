@@ -24,23 +24,26 @@ public class infusionRecipes {
     static ItemStack seed = new ItemStack(Items.wheat_seeds);
 
     public static void init(){
-        makeRecipesForSeeds(crops.T1Aspects, 10, 0);
-        makeRecipesForSeeds(crops.T2Aspects, 11, 5);
-        makeRecipesForSeeds(crops.T3Aspects, 12, 10);
-        makeRecipesForSeeds(crops.T4Aspects, 13, 15);
-        makeRecipesForSeeds(crops.T5Aspects, 14, 20);
-        makeRecipesForSeeds(crops.T6Aspects, 15, 25);
-        makeRecipesForSeeds(crops.T7Aspects, 16, 30);
+        makeRecipesForSeeds(crops.T1Aspects, 1);
+        makeRecipesForSeeds(crops.T2Aspects, 2);
+        makeRecipesForSeeds(crops.T3Aspects, 3);
+        makeRecipesForSeeds(crops.T4Aspects, 4);
+        makeRecipesForSeeds(crops.T5Aspects, 5);
+        makeRecipesForSeeds(crops.T6Aspects, 6);
+        makeRecipesForSeeds(crops.T7Aspects, 7);
     }
 
-    static void makeRecipesForSeeds(ArrayList<String> aspectList, int Instability, int aspectNumber){
+    static void makeRecipesForSeeds(ArrayList<String> aspectList, int Tier){
         for (int i = 0; i < aspectList.size(); i++) {
             String aspect = aspectList.get(i);
+            int Instability = 1+2*Tier;
+            int aspectNumber1 = 10+5*Tier;
+            int aspectNumber2 = aspectNumber1 + 5;
             Aspect Aspect = thaumcraft.api.aspects.Aspect.getAspect(aspect);
             ItemStack compoundSeed1 = new ItemStack(GameRegistry.findItem(crops.ModID, Aspect.getComponents()[0].getTag()+"crop"));
             ItemStack compoundSeed2 = new ItemStack(GameRegistry.findItem(crops.ModID, Aspect.getComponents()[1].getTag()+"crop"));
             ItemStack thisItem = new ItemStack(GameRegistry.findItem(crops.ModID, aspect + "seed"));
-            InfusionRecipes.put(aspect, ThaumcraftApi.addInfusionCraftingRecipe(lib.T1SEED, thisItem, Instability, (new AspectList()).add(Aspect.PLANT, 15+aspectNumber).add(Aspect.CROP, 15+aspectNumber).add(Aspect.ORDER, 20+aspectNumber).add(Aspect.MAGIC, 20+aspectNumber), seed, new ItemStack[]{compoundSeed1, compoundSeed1, compoundSeed1, compoundSeed2, compoundSeed2, compoundSeed2}));
+            InfusionRecipes.put(aspect, ThaumcraftApi.addInfusionCraftingRecipe("T"+Tier+"SEED", thisItem, Instability, (new AspectList()).add(Aspect.PLANT, aspectNumber1).add(Aspect.CROP, aspectNumber1).add(Aspect.ORDER, aspectNumber2).add(Aspect.MAGIC, aspectNumber2), seed, new ItemStack[]{compoundSeed1, compoundSeed1, compoundSeed1, compoundSeed2, compoundSeed2, compoundSeed2}));
         }
     }
 }

@@ -35,12 +35,12 @@ public class pages {
             research.addPage(new ResearchPage(crucibleRecipes.CrucibleRecipes.get("agent"+i)));
         }
 
-        research = new ElecResearch(lib.T1SEED, StringToAspectList("messis 50, gelum 50, motus 50, potentia 50, vacuos 50, victus 50"), new ResourceLocation(crops.ModID.toLowerCase(), "textures/items/aordo.crop.png"), 5, 4, 1);
+        research = new ElecResearch("T1SEED", StringToAspectList("messis 50, gelum 50, motus 50, potentia 50, vacuos 50, victus 50"), new ResourceLocation(crops.ModID.toLowerCase(), "textures/items/aordo.crop.png"), 5, 4, 1);
         for (int i = 0; i < crops.T1Aspects.size(); i++) {
             research.addPage(new ResearchPage(infusionRecipes.InfusionRecipes.get(crops.T1Aspects.get(i))));
         }
 
-        research = new ElecResearch(lib.T2SEED, StringToAspectList("messis 50, bestia 50, herba 50, limus 50, mortuus 50, sano 50, vinculum 50"), new ResourceLocation(crops.ModID.toLowerCase(), "textures/items/messis.crop.png"), 5, 5, 1);
+        research = new ElecResearch("T2SEED", StringToAspectList("messis 50, bestia 50, herba 50, limus 50, mortuus 50, sano 50, vinculum 50"), new ResourceLocation(crops.ModID.toLowerCase(), "textures/items/messis.crop.png"), 5, 5, 1);
         for (int i = 0; i < crops.T2Aspects.size(); i++) {
             research.addPage(new ResearchPage(infusionRecipes.InfusionRecipes.get(crops.T2Aspects.get(i))));
         }
