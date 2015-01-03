@@ -17,13 +17,18 @@ import java.util.HashMap;
  */
 public class crucibleRecipes {
     @SuppressWarnings("unchecked")
-    public static HashMap<String, CrucibleRecipe> PrimSeedRecipes = new HashMap();
+    public static HashMap<String, CrucibleRecipe> CrucibleRecipes = new HashMap();
 
     public static void init(){
         for (int i = 0; i < crops.primAspects.size(); i++) {
-            String aspect = crops.primAspects.get(i).toString();
+            String aspect = crops.primAspects.get(i);
             ItemStack thisItem = new ItemStack(GameRegistry.findItem(crops.ModID, aspect+"seed"));
-            PrimSeedRecipes.put(aspect, ThaumcraftApi.addCrucibleRecipe(lib.AGENT, thisItem, new ItemStack(Items.wheat_seeds), (new AspectList()).merge(Aspect.MAGIC, 10).merge(Aspect.getAspect(aspect), 10)));
+            CrucibleRecipes.put(aspect, ThaumcraftApi.addCrucibleRecipe(lib.PRIMALSEEDS, thisItem, new ItemStack(Items.wheat_seeds), (new AspectList()).merge(Aspect.MAGIC, 10).merge(Aspect.getAspect(aspect), 10)));
         }
+        for (int i = 2; i < 8; i++) {
+            CrucibleRecipes.put("agent"+i, ThaumcraftApi.addCrucibleRecipe(lib.AGENT, new ItemStack(GameRegistry.findItem(crops.ModID, "agent"+i)), new ItemStack(GameRegistry.findItem(crops.ModID, "agent"+(i-1))), (new AspectList()).merge(Aspect.MAGIC, 10).merge(Aspect.ORDER, 10).merge(Aspect.SLIME, 10)) );
+        }
+
+
     }
 }

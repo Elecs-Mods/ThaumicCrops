@@ -36,9 +36,22 @@ public class crops extends ModBase{
     public static Configuration config;
     public static String ModID;
 
-    //static String[] crops = Aspect.a  //{"aaer", "aaqua", "aignis", "aordo"};
-    public static ArrayList primAspects = TChelper.getAspectTag(Aspect.getPrimalAspects());
-    public static ArrayList cropList = primAspects;
+    static String[] agentString = {"agent1", "aaqua", "aignis", "aordo"};
+    public static ArrayList<String> agents = stringHelper.convertStringArrayToArraylist(agentString);
+
+    @SuppressWarnings("unchecked")
+    public static ArrayList<String> primAspects = TChelper.getAspectTag(Aspect.getPrimalAspects());
+    @SuppressWarnings("unchecked")
+    public static ArrayList<String> compoundAspects = TChelper.getAspectTag(Aspect.getCompoundAspects());
+    @SuppressWarnings("unchecked")
+    public static ArrayList<String> cropList = stringHelper.mergeArrays(primAspects, compoundAspects);
+    public static ArrayList<String> T1Aspects = new ArrayList<String>();
+
+    void createArrayLists(){
+        for (int i = 0; i < 10; i++) {
+            this.T1Aspects.add(compoundAspects.get(i));
+        }
+    }
 
     @SidedProxy(clientSide = modInfo.CLIENTPROXY, serverSide = modInfo.COMMONPROXY)
     public static CommonProxy proxy;
@@ -50,9 +63,9 @@ public class crops extends ModBase{
     public void preInit(FMLPreInitializationEvent event) {
         this.ModID = modInfoHelper.getModID(event);
         this.config = new Configuration(FileHelper.getConfigFileElec(event));
-
+        createArrayLists();
         for (int i = 0; i < cropList.size(); i++) {
-            String cropName = (String) cropList.get(i);
+            String cropName = cropList.get(i);
             String modName = ModID;
 
             //blocks block = new blocks();
@@ -69,6 +82,9 @@ public class crops extends ModBase{
 
 
 
+        }
+        for (int i = 1; i < 8; i++) {
+            new baseItem("agent" + i, null, event);
         }
 
         //t = new baseCrop("aaer", ropItem, ETestMod.cropItem, "crops");
