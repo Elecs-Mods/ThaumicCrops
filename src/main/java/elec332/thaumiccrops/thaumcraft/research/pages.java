@@ -1,15 +1,18 @@
 package elec332.thaumiccrops.thaumcraft.research;
 
+import elec332.thaumiccrops.init.recipes;
 import elec332.thaumiccrops.main.crops;
 import elec332.thaumiccrops.thaumcraft.ElecResearch;
 import elec332.thaumiccrops.thaumcraft.lib.lib;
 import elec332.thaumiccrops.thaumcraft.recipes.arcaneRecipes;
 import elec332.thaumiccrops.thaumcraft.recipes.crucibleRecipes;
 import elec332.thaumiccrops.thaumcraft.recipes.infusionRecipes;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchPage;
+import thaumcraft.common.config.ConfigItems;
 
 /**
  * Created by Elec332 on 1-1-2015.
@@ -64,6 +67,9 @@ public class pages {
         for (int i = 0; i < crops.T7Aspects.size(); i++) {
             research.addPage(new ResearchPage(infusionRecipes.InfusionRecipes.get(crops.T7Aspects.get(i))));
         }
+
+        research = new ElecResearch("CROPRESOURCES", StringToAspectList("messis 50, fabrico 50, machina 50, meto 50, pannus 50, telum 50, tutamen 50"), new ResourceLocation(crops.ModID.toLowerCase(), "textures/items/messis.crop.png"), 4, -1, 3);
+        research.addPage(new ResearchPage(recipes.PageRecipes()));
     }
 
     public static AspectList StringToAspectList(String aspectString) {
