@@ -3,7 +3,6 @@ package elec332.thaumiccrops.cropstuff.special;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import elec332.core.util.blocks.baseCrop;
-import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -58,7 +57,6 @@ public class blockC extends baseCrop {
     @Override
     public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune) {
         ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
-        Random random = new Random();
 
         if (metadata != 7) ret.add(new ItemStack(func_149866_i()));
 
@@ -73,7 +71,9 @@ public class blockC extends baseCrop {
                 if(crops.size() == 1) {
                     ret.add(new ItemStack(crops.get(0)));
                 }else{
-                    ret.add(new ItemStack(crops.get(random.nextInt((crops.size()-1)))));
+                    int boolnr = world.rand.nextInt((crops.size()+crops.size()/2));
+                    if(boolnr <= (crops.size()-1))
+                    ret.add(new ItemStack(crops.get(boolnr)));
                 }
             }
         }
@@ -82,14 +82,11 @@ public class blockC extends baseCrop {
 
     @Override
     public Item getItemDropped(int metadata, Random random, int p_149650_3_) {
-        //if (metadata != 7){
-        //    return func_149866_i();
-        //}
         return null;
     }
 
-    //@Override
-   // public boolean func_149851_a(World p_149851_1_, int p_149851_2_, int p_149851_3_, int p_149851_4_, boolean p_149851_5_) {
-    //    return false;
-    //}
+    @Override
+    public boolean func_149851_a(World p_149851_1_, int p_149851_2_, int p_149851_3_, int p_149851_4_, boolean p_149851_5_) {
+        return false;
+    }
 }
