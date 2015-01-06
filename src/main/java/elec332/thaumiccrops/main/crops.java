@@ -13,9 +13,12 @@ import elec332.core.modBaseUtils.modInfo;
 import elec332.core.proxies.CommonProxy;
 import elec332.core.util.items.baseItem;
 import elec332.thaumiccrops.cropstuff.seedItem;
+import elec332.thaumiccrops.cropstuff.special.seedC;
+import elec332.thaumiccrops.helpers;
 import elec332.thaumiccrops.init.recipes;
 import elec332.thaumiccrops.thaumcraft.TChelper;
 import elec332.thaumiccrops.thaumcraft.thaumcraft;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
@@ -35,7 +38,7 @@ public class crops extends ModBase{
     public static Configuration config;
     public static String ModID;
     static String[] miscItemShardsString = {"air", "fire", "water", "earth", "order", "entropy", "diamond", "lapis", "amber"};
-    public static ArrayList<String> miscItemShards = stringHelper.convertStringArrayToArraylist(miscItemShardsString);
+    public static ArrayList<String> RecourceCrops = stringHelper.convertStringArrayToArraylist(miscItemShardsString);
     public static ArrayList<String> T1Aspects = new ArrayList<String>();
     public static ArrayList<String> T2Aspects = new ArrayList<String>();
     public static ArrayList<String> T3Aspects = new ArrayList<String>();
@@ -64,17 +67,30 @@ public class crops extends ModBase{
         this.ModID = modInfoHelper.getModID(event);
         this.config = new Configuration(FileHelper.getConfigFileElec(event));
         createTCArrayLists();
+        createMiscArrays();
         for (int i = 0; i < cropList.size(); i++) {
             String cropName = cropList.get(i);
             String modName = ModID;
-            new seedItem(cropName, modName, new baseItem(cropName + "crop", ElecCTab.ElecTab, modName).setTextureName(modName + ":" + cropName + ".crop"));
+            new seedItem(cropName, modName, new baseItem(cropName + "crop", CTab.ElecTab, modName).setTextureName(modName + ":" + cropName + ".crop"));
         }
         for (int i = 1; i < 8; i++) {
             new baseItem("agent" + i, null, event);
         }
-        for (int i = 0; i < miscItemShards.size(); i++) {
-            new baseItem(miscItemShards.get(i) + "Shard", null, event);
+        ArrayList<Item> shards= new ArrayList<Item>();
+        for (int i = 0; i < RecourceCrops.size(); i++) {
+            String cropName = RecourceCrops.get(i);
+            if(helpers.isTCShard(cropName)) {
+                String fullname = cropName + "Shard";
+                new baseItem(fullname, null, event);
+                shards.add(getItemFromName(fullname));
+            }
+            if(!helpers.isTCShard(cropName)) {
+                ArrayList<Item> item = new ArrayList<Item>();
+                item.add(new baseItem(cropName + "Shard", CTab.ElecTab, event));
+                new seedC(cropName, ModID, item);
+            }
         }
+        new seedC("shard", ModID, shards);
 
         MCModInfo.CreateMCModInfoElec(event, "Crops!",
                 "-", "assets/elec332/logo.png", new String[]{"Elec332"});
@@ -104,6 +120,10 @@ public class crops extends ModBase{
         this.T5Aspects.add("humanus");
         this.T6Aspects = stringHelper.convertStringArrayToArraylist(new String[]{"instrumentum", "lucrum", "messis", "perfodio"});
         this.T7Aspects = stringHelper.convertStringArrayToArraylist(new String[]{"fabrico", "machina", "meto", "pannus", "telum", "tutamen"});
+    }
+
+    void createMiscArrays(){
+        //this.RecourceCrops = stringHelper.convertStringArrayToArraylist(new String[]{""});
     }
 
     public static Item getItemFromName(String name){

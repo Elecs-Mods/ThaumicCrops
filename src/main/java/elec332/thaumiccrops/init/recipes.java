@@ -19,11 +19,11 @@ import java.util.ArrayList;
 public class recipes {
 
     public static IRecipe[] PageRecipes(){
-        IRecipe[] recipes = new IRecipe[crops.miscItemShards.size()];
+        IRecipe[] recipes = new IRecipe[crops.RecourceCrops.size()];
         int q = 0;
-        for (int i = 0; i < crops.miscItemShards.size(); i++) {
-            String itemName = crops.miscItemShards.get(i);
-            String ident = helpers.isTCShard(itemName);
+        for (int i = 0; i < crops.RecourceCrops.size(); i++) {
+            String itemName = crops.RecourceCrops.get(i);
+            String ident = helpers.isTCShard(itemName, "shard", "gem");
             String itemNameUppercase = itemName.substring(0, 1).toUpperCase() + itemName.substring(1);
             IRecipe recipe = recipeHelper.addStorageRecipe(GameRegistry.findItem(crops.ModID, itemName + "Shard"), new ItemStack(oredictHelper.getFirstOredictEntry(ident + itemNameUppercase),1, oredictHelper.getFirstOredictItemDamage(ident+itemNameUppercase)));
             recipes[q] = recipe;
