@@ -34,7 +34,7 @@ public class crops extends ModBase{
 
     public static Configuration config;
     public static String ModID;
-    static String[] miscItemShardsString = {"diamond", "lapis", "amber"};
+    static String[] miscItemShardsString = {"air", "fire", "water", "earth", "order", "entropy", "diamond", "lapis", "amber"};
     public static ArrayList<String> miscItemShards = stringHelper.convertStringArrayToArraylist(miscItemShardsString);
     public static ArrayList<String> T1Aspects = new ArrayList<String>();
     public static ArrayList<String> T2Aspects = new ArrayList<String>();
@@ -52,11 +52,6 @@ public class crops extends ModBase{
 
     @SuppressWarnings("unchecked")
     public static ArrayList<String> cropList = stringHelper.mergeArrays(primAspects, compoundAspects);
-
-    @SuppressWarnings("unchecked")
-    static ArrayList<String> miscItemShardsAll = stringHelper.mergeArrays(miscItemShards, primAspects);
-    public static int miscItemShardNumber = miscItemShardsAll.size();
-
 
     @SidedProxy(clientSide = modInfo.CLIENTPROXY, serverSide = modInfo.COMMONPROXY)
     public static CommonProxy proxy;
@@ -77,8 +72,8 @@ public class crops extends ModBase{
         for (int i = 1; i < 8; i++) {
             new baseItem("agent" + i, null, event);
         }
-        for (int i = 0; i < miscItemShardsAll.size(); i++) {
-            new baseItem(miscItemShardsAll.get(i) + "Shard", null, event);
+        for (int i = 0; i < miscItemShards.size(); i++) {
+            new baseItem(miscItemShards.get(i) + "Shard", null, event);
         }
 
         MCModInfo.CreateMCModInfoElec(event, "Crops!",
