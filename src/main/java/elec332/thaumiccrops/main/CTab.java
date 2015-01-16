@@ -13,7 +13,7 @@ public class CTab {
         @Override
         @SideOnly(Side.CLIENT)
         public Item getTabIconItem() {
-            return crops.getItemFromName("aer");
+            return crops.getItemFromName("aerseed");
         }
     };
 }
