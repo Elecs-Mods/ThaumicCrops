@@ -111,6 +111,7 @@ public class crops extends ModBase{
     public void postInit(FMLPostInitializationEvent event) {
         System.out.println(event.getModState());
         OreDictionary.registerOre("blockAmber", GameRegistry.findBlock("Thaumcraft", "blockCosmeticOpaque"));
+        OreDictionary.registerOre("blockShard", new ItemStack(GameRegistry.findBlock("Thaumcraft", "blockCrystal"), 1, 6));
         //recipes.init();
         thaumcraft.init();
     }
