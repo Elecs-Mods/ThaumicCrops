@@ -1,6 +1,7 @@
 package elec332.thaumiccrops.thaumcraft.recipes;
 
 import cpw.mods.fml.common.registry.GameRegistry;
+import elec332.core.helper.arrayHelper;
 import elec332.core.helper.oredictHelper;
 import elec332.thaumiccrops.helpers;
 import elec332.thaumiccrops.main.crops;
@@ -55,18 +56,31 @@ public class infusionRecipes {
         for (int i = 0; i < arrayList.size(); i++) {
             String itemName = arrayList.get(i);
             if (itemName.equalsIgnoreCase("shard") || itemName.equalsIgnoreCase("lapis")){
-                //do nothing yet
+                if (itemName.equalsIgnoreCase("lapis"))
+                    makeRecipesResourceSeed("lapis");
             } else {
-                Aspect[] aspectList = ThaumcraftApiHelper.getObjectAspects(oredictHelper.getFirstOreDictItemWithMeta("gem"+ helpers.uppercaseFirstLetter(itemName))).getAspects();
-                String aspectName1 = aspectList[0].getTag();
-                String aspectName2 = aspectList[1].getTag();
-                String fullName = itemName + "seed";
-                ItemStack seed1 = new ItemStack(crops.getItemFromName(aspectName1 + "crop"));
-                ItemStack seed2 = new ItemStack(crops.getItemFromName(aspectName2 + "crop"));
-                ItemStack agent = new ItemStack(crops.getItemFromName("agent7"));
-                ItemStack block = oredictHelper.getFirstOreDictItemWithMeta("block"+helpers.uppercaseFirstLetter(itemName));
-                InfusionRecipes.put(itemName, ThaumcraftApi.addInfusionCraftingRecipe("CROPRESOURCES", new ItemStack(crops.getItemFromName(fullName)), 12, (new AspectList()).add(Aspect.PLANT, 45).add(Aspect.HARVEST, 50).add(Aspect.CRAFT, 50).add(Aspect.MAGIC, 50), new ItemStack(crops.getItemFromName("fabricoseed")), new ItemStack[]{seed1, seed1, seed1, seed2, seed2, seed2, block, block, agent, agent}));
+                makeRecipesResourceSeed(itemName);
             }
+        }
+    }
+
+    static void makeRecipesResourceSeed(String itemName){
+        Aspect[] aspectList = ThaumcraftApiHelper.getObjectAspects(oredictHelper.getFirstOreDictItemWithMeta("gem"+ helpers.uppercaseFirstLetter(itemName))).getAspects();
+        String aspectName1 = aspectList[0].getTag();
+        String aspectName2 = ResTest(aspectList, 1, aspectName1);
+        String fullName = itemName + "seed";
+        ItemStack seed1 = new ItemStack(crops.getItemFromName(aspectName1 + "crop"));
+        ItemStack seed2 = new ItemStack(crops.getItemFromName(aspectName2 + "crop"));
+        ItemStack agent = new ItemStack(crops.getItemFromName("agent7"));
+        ItemStack block = oredictHelper.getFirstOreDictItemWithMeta("block"+helpers.uppercaseFirstLetter(itemName));
+        InfusionRecipes.put(itemName, ThaumcraftApi.addInfusionCraftingRecipe("CROPRESOURCES", new ItemStack(crops.getItemFromName(fullName)), 12, (new AspectList()).add(Aspect.PLANT, 45).add(Aspect.HARVEST, 50).add(Aspect.CRAFT, 50).add(Aspect.MAGIC, 50), new ItemStack(crops.getItemFromName("fabricoseed")), new ItemStack[]{seed1, seed1, seed1, seed2, seed2, seed2, block, block, agent, agent}));
+    }
+
+    static String ResTest(Aspect[] aspects, int i, String ifNull){
+        try {
+            return aspects[i].getTag();
+        }catch (Exception e){
+            return ifNull;
         }
     }
 }

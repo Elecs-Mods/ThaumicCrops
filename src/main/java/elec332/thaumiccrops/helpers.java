@@ -6,13 +6,13 @@ import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
  * Created by Elec332 on 5-1-2015.
  */
 public class helpers {
-    //public static HashMap<Item> getAspectsFormItem= new HashMap();
 
     public static String isTCShard(String string, String True, String False){
         if(isTCShard(string))
@@ -31,5 +31,4 @@ public class helpers {
     public static String uppercaseFirstLetter(String string){
         return string.substring(0, 1).toUpperCase() + string.substring(1);
     }
-
 }

@@ -56,7 +56,7 @@ public class crops extends ModBase{
     public static ArrayList<String> compoundAspects = TChelper.getAspectTag(Aspect.getCompoundAspects());
 
     @SuppressWarnings("unchecked")
-    public static ArrayList<String> cropList = stringHelper.mergeArrays(primAspects, compoundAspects);
+    public static ArrayList<String> cropList = arrayHelper.mergeArrays(primAspects, compoundAspects);
 
     @SidedProxy(clientSide = modInfo.CLIENTPROXY, serverSide = modInfo.COMMONPROXY)
     public static CommonProxy proxy;
