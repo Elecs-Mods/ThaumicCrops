@@ -69,6 +69,12 @@ public class pages {
         }
 
         research = new ElecResearch("CROPRESOURCES", StringToAspectList("messis 50, fabrico 50, machina 50, meto 50, pannus 50, telum 50, tutamen 50"), new ResourceLocation(crops.ModID.toLowerCase(), "textures/items/messis.crop.png"), 4, -1, 3);
+        for (int i = 0; i < crops.RecourceSeeds.size(); i++) {
+            String name = crops.RecourceSeeds.get(i);
+            if (infusionRecipes.InfusionRecipes.get(name) != null) {
+                research.addPage(new ResearchPage(infusionRecipes.InfusionRecipes.get(name)));
+            }
+        }
         research.addPage(new ResearchPage(recipes.PageRecipes()));
     }
 

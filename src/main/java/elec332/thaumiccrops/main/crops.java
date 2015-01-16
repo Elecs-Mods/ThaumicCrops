@@ -19,6 +19,7 @@ import elec332.thaumiccrops.init.recipes;
 import elec332.thaumiccrops.thaumcraft.TChelper;
 import elec332.thaumiccrops.thaumcraft.thaumcraft;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
@@ -37,8 +38,8 @@ public class crops extends ModBase{
 
     public static Configuration config;
     public static String ModID;
-    static String[] miscItemShardsString = {"air", "fire", "water", "earth", "order", "entropy", "diamond", "lapis", "amber"};
-    public static ArrayList<String> RecourceCrops = stringHelper.convertStringArrayToArraylist(miscItemShardsString);
+    protected static String[] miscItemShardsString = {"air", "fire", "water", "earth", "order", "entropy", "diamond", "lapis", "amber"};
+    public static ArrayList<String> RecourceSeeds = new ArrayList<String>();
     public static ArrayList<String> T1Aspects = new ArrayList<String>();
     public static ArrayList<String> T2Aspects = new ArrayList<String>();
     public static ArrayList<String> T3Aspects = new ArrayList<String>();
@@ -77,8 +78,8 @@ public class crops extends ModBase{
             new baseItem("agent" + i, null, event);
         }
         ArrayList<Item> shards= new ArrayList<Item>();
-        for (int i = 0; i < RecourceCrops.size(); i++) {
-            String cropName = RecourceCrops.get(i);
+        for (int i = 0; i < miscItemShardsString.length; i++) {
+            String cropName = miscItemShardsString[i];
             if(helpers.isTCShard(cropName)) {
                 String fullname = cropName + "Shard";
                 new baseItem(fullname, null, event);
@@ -88,9 +89,11 @@ public class crops extends ModBase{
                 ArrayList<Item> item = new ArrayList<Item>();
                 item.add(new baseItem(cropName + "Shard", CTab.ElecTab, event));
                 new seedC(cropName, ModID, item);
+                RecourceSeeds.add(cropName);
             }
         }
         new seedC("shard", ModID, shards);
+        RecourceSeeds.add("shard");
 
         MCModInfo.CreateMCModInfoElec(event, "Crops!",
                 "-", "assets/elec332/logo.png", new String[]{"Elec332"});

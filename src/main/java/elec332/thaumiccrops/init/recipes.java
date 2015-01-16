@@ -7,24 +7,19 @@ import elec332.thaumiccrops.helpers;
 import elec332.thaumiccrops.main.crops;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
-import net.minecraftforge.oredict.OreDictionary;
-import thaumcraft.api.research.ResearchPage;
-import thaumcraft.common.config.ConfigItems;
-
-import java.util.ArrayList;
 
 /**
  * Created by Elec332 on 4-1-2015.
  */
-public class recipes {
+public class recipes extends crops{
 
     public static IRecipe[] PageRecipes(){
-        IRecipe[] recipes = new IRecipe[crops.RecourceCrops.size()];
+        IRecipe[] recipes = new IRecipe[miscItemShardsString.length];
         int q = 0;
-        for (int i = 0; i < crops.RecourceCrops.size(); i++) {
-            String itemName = crops.RecourceCrops.get(i);
+        for (int i = 0; i < miscItemShardsString.length; i++) {
+            String itemName = miscItemShardsString[i];
             String ident = helpers.isTCShard(itemName, "shard", "gem");
-            String itemNameUppercase = itemName.substring(0, 1).toUpperCase() + itemName.substring(1);
+            String itemNameUppercase = helpers.uppercaseFirstLetter(itemName);
             IRecipe recipe = recipeHelper.addStorageRecipe(GameRegistry.findItem(crops.ModID, itemName + "Shard"), new ItemStack(oredictHelper.getFirstOredictEntry(ident + itemNameUppercase),1, oredictHelper.getFirstOredictItemDamage(ident+itemNameUppercase)));
             recipes[q] = recipe;
             q++;
