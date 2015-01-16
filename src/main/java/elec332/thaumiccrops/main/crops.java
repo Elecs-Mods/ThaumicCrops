@@ -24,6 +24,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.common.config.Configuration;
+import net.minecraftforge.oredict.OreDictionary;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.common.config.ConfigItems;
 
@@ -109,6 +110,7 @@ public class crops extends ModBase{
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent event) {
         System.out.println(event.getModState());
+        OreDictionary.registerOre("blockAmber", GameRegistry.findBlock("Thaumcraft", "blockCosmeticOpaque"));
         //recipes.init();
         thaumcraft.init();
     }
