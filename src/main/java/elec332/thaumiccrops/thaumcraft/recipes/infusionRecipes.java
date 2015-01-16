@@ -23,7 +23,7 @@ import java.util.HashMap;
 public class infusionRecipes {
 
     @SuppressWarnings("unchecked")
-    public static HashMap<String, InfusionRecipe> InfusionRecipes = new HashMap<String, InfusionRecipe>();
+    public static HashMap<String, InfusionRecipe> InfusionRecipes = new HashMap();
 
     public static void init(){
         makeRecipesForSeeds(crops.T1Aspects, 1);
@@ -57,22 +57,14 @@ public class infusionRecipes {
             if (itemName.equalsIgnoreCase("shard") || itemName.equalsIgnoreCase("lapis")){
                 //do nothing yet
             } else {
-                Aspect[] aspectList = ThaumcraftApiHelper.getObjectAspects(new ItemStack(oredictHelper.getFirstOredictEntry("gem" + helpers.uppercaseFirstLetter(itemName)))).getAspects();
+                Aspect[] aspectList = ThaumcraftApiHelper.getObjectAspects(oredictHelper.getFirstOreDictItemWithMeta("gem"+ helpers.uppercaseFirstLetter(itemName))).getAspects();
                 String aspectName1 = aspectList[0].getTag();
                 String aspectName2 = aspectList[1].getTag();
                 String fullName = itemName + "seed";
-                Item seed1 = crops.getItemFromName(aspectName1 + "seed");
-                Item seed2 = crops.getItemFromName(aspectName2 + "seed");
-                InfusionRecipes.put(itemName, ThaumcraftApi.addInfusionCraftingRecipe("CROPRESOURCES", new ItemStack(crops.getItemFromName(fullName)), 12, (new AspectList()).add(Aspect.PLANT, 45).add(Aspect.HARVEST, 50).add(Aspect.CRAFT, 50).add(Aspect.MAGIC, 50), new ItemStack(crops.getItemFromName("fabricoseed")), new ItemStack[]{new ItemStack(seed1), new ItemStack(seed2)}));
+                ItemStack seed1 = new ItemStack(crops.getItemFromName(aspectName1 + "crop"));
+                ItemStack seed2 = new ItemStack(crops.getItemFromName(aspectName2 + "crop"));
+                InfusionRecipes.put(itemName, ThaumcraftApi.addInfusionCraftingRecipe("CROPRESOURCES", new ItemStack(crops.getItemFromName(fullName)), 12, (new AspectList()).add(Aspect.PLANT, 45).add(Aspect.HARVEST, 50).add(Aspect.CRAFT, 50).add(Aspect.MAGIC, 50), new ItemStack(crops.getItemFromName("fabricoseed")), new ItemStack[]{seed1, seed1, seed1, seed2, seed2, seed2}));
             }
         }
-    }
-
-    static String getModFromItem(String item){
-        if (item.equalsIgnoreCase("diamond") || item.equalsIgnoreCase("lapis"))
-            return "minecraft";
-        if (item.equalsIgnoreCase("amber") || item.equalsIgnoreCase("shard"))
-            return "Thaumcraft";
-       return null;
     }
 }
