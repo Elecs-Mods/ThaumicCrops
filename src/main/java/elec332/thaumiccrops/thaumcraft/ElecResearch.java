@@ -17,13 +17,14 @@ public class ElecResearch extends ResearchItem {
         this.registerResearchItem();
     }
 
+    @SuppressWarnings("ManualArrayCopy")
     public ResearchItem addPage(ResearchPage researchPage){
-        ResearchPage[] standardpages = this.getPages();
-        ResearchPage[] Pages = new ResearchPage[standardpages.length + 1];
-        for (int i = 0; i < standardpages.length; i++) {
-            Pages[i] = standardpages[i];
+        ResearchPage[] standardPages = this.getPages();
+        ResearchPage[] Pages = new ResearchPage[standardPages.length + 1];
+        for (int i = 0; i < standardPages.length; i++) {
+            Pages[i] = standardPages[i];
         }
-        Pages[standardpages.length] = researchPage;
+        Pages[standardPages.length] = researchPage;
         this.setPages(Pages);
         return this;
     }

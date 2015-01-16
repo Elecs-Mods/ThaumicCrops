@@ -16,8 +16,7 @@ public class recipes extends crops{
     public static IRecipe[] PageRecipes(){
         IRecipe[] recipes = new IRecipe[miscItemShardsString.length];
         int q = 0;
-        for (int i = 0; i < miscItemShardsString.length; i++) {
-            String itemName = miscItemShardsString[i];
+        for (String itemName : miscItemShardsString) {
             String ident = helpers.isTCShard(itemName, "shard", "gem");
             String itemNameUppercase = helpers.uppercaseFirstLetter(itemName);
             IRecipe recipe = recipeHelper.addStorageRecipe(GameRegistry.findItem(crops.ModID, itemName + "Shard"), new ItemStack(oredictHelper.getFirstOredictEntry(ident + itemNameUppercase),1, oredictHelper.getFirstOredictItemDamage(ident+itemNameUppercase)));

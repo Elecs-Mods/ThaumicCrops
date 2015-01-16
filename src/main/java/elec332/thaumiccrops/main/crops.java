@@ -7,7 +7,6 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 import elec332.core.helper.*;
-import elec332.core.main.ElecCTab;
 import elec332.core.modBaseUtils.ModBase;
 import elec332.core.modBaseUtils.modInfo;
 import elec332.core.proxies.CommonProxy;
@@ -15,18 +14,13 @@ import elec332.core.util.items.baseItem;
 import elec332.thaumiccrops.cropstuff.seedItem;
 import elec332.thaumiccrops.cropstuff.special.seedC;
 import elec332.thaumiccrops.helpers;
-import elec332.thaumiccrops.init.recipes;
 import elec332.thaumiccrops.thaumcraft.TChelper;
 import elec332.thaumiccrops.thaumcraft.thaumcraft;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.oredict.OreDictionary;
 import thaumcraft.api.aspects.Aspect;
-import thaumcraft.common.config.ConfigItems;
 
 import java.util.ArrayList;
 
@@ -69,9 +63,7 @@ public class crops extends ModBase{
         this.ModID = modInfoHelper.getModID(event);
         this.config = new Configuration(FileHelper.getConfigFileElec(event));
         createTCArrayLists();
-        createMiscArrays();
-        for (int i = 0; i < cropList.size(); i++) {
-            String cropName = cropList.get(i);
+        for (String cropName : cropList) {
             String modName = ModID;
             new seedItem(cropName, modName, new baseItem(cropName + "crop", CTab.ElecTab, modName).setTextureName(modName + ":" + cropName + ".crop"));
         }
@@ -79,8 +71,7 @@ public class crops extends ModBase{
             new baseItem("agent" + i, null, event);
         }
         ArrayList<Item> shards= new ArrayList<Item>();
-        for (int i = 0; i < miscItemShardsString.length; i++) {
-            String cropName = miscItemShardsString[i];
+        for (String cropName : miscItemShardsString) {
             if(helpers.isTCShard(cropName)) {
                 String fullname = cropName + "Shard";
                 new baseItem(fullname, null, event);
@@ -104,7 +95,6 @@ public class crops extends ModBase{
     public void init(FMLInitializationEvent event) {
         System.out.println(event.getModState());
         loadConfiguration(config);
-        //recipes.init();
     }
 
     @Mod.EventHandler
@@ -112,7 +102,6 @@ public class crops extends ModBase{
         System.out.println(event.getModState());
         OreDictionary.registerOre("blockAmber", GameRegistry.findBlock("Thaumcraft", "blockCosmeticOpaque"));
         OreDictionary.registerOre("blockShard", new ItemStack(GameRegistry.findBlock("Thaumcraft", "blockCrystal"), 1, 6));
-        //recipes.init();
         thaumcraft.init();
     }
 
@@ -126,10 +115,6 @@ public class crops extends ModBase{
         this.T5Aspects.add("humanus");
         this.T6Aspects = stringHelper.convertStringArrayToArraylist(new String[]{"instrumentum", "lucrum", "messis", "perfodio"});
         this.T7Aspects = stringHelper.convertStringArrayToArraylist(new String[]{"fabrico", "machina", "meto", "pannus", "telum", "tutamen"});
-    }
-
-    void createMiscArrays(){
-        //this.RecourceCrops = stringHelper.convertStringArrayToArraylist(new String[]{""});
     }
 
     public static Item getItemFromName(String name){
