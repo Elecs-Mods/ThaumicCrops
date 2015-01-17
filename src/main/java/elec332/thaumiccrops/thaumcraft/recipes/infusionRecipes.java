@@ -5,6 +5,7 @@ import elec332.core.helper.arrayHelper;
 import elec332.core.helper.oredictHelper;
 import elec332.thaumiccrops.helpers;
 import elec332.thaumiccrops.main.crops;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -35,6 +36,8 @@ public class infusionRecipes {
         makeRecipesForSeeds(crops.T6Aspects, 6);
         makeRecipesForSeeds(crops.T7Aspects, 7);
         recourceSeedRecipes(crops.RecourceSeeds);
+        InfusionRecipes.put("treasure", ThaumcraftApi.addInfusionCraftingRecipe("TREASURESEED", new ItemStack(crops.getItemFromName("treasureseed")), 12, (new AspectList()).add(Aspect.PLANT, 45).add(Aspect.CROP, 45).add(Aspect.CRAFT, 50).add(Aspect.TRAVEL, 100).add(Aspect.GREED, 100), new ItemStack(crops.getItemFromName("fabricoseed")), new ItemStack[]{new ItemStack(crops.getItemFromName("itercrop")), new ItemStack(crops.getItemFromName("ordocrop")), new ItemStack(crops.getItemFromName("itercrop")), new ItemStack(crops.getItemFromName("lucrumcrop")), new ItemStack(crops.getItemFromName("itercrop")), new ItemStack(crops.getItemFromName("ordocrop")), new ItemStack(crops.getItemFromName("teleportCore")), new ItemStack(Blocks.gold_block), new ItemStack(Blocks.diamond_block), new ItemStack(crops.getItemFromName("agent7")), new ItemStack(crops.getItemFromName("agent7"))}));
+        InfusionRecipes.put("teleCore", ThaumcraftApi.addInfusionCraftingRecipe("TREASURESEED", new ItemStack(crops.getItemFromName("teleportCore")), 11, (new AspectList()).add(Aspect.PLANT, 45).add(Aspect.HARVEST, 50).add(Aspect.CRAFT, 50).add(Aspect.TRAVEL, 100), new ItemStack(Items.nether_star), new ItemStack[]{new ItemStack(Items.gold_nugget), new ItemStack(Items.ender_pearl), new ItemStack(Items.gold_nugget), new ItemStack(Items.ender_pearl), new ItemStack(Items.gold_nugget), new ItemStack(Items.ender_pearl), new ItemStack(Items.gold_nugget), new ItemStack(Items.ender_pearl)}));
     }
 
     static void makeRecipesForSeeds(ArrayList<String> aspectList, int Tier){
@@ -67,7 +70,6 @@ public class infusionRecipes {
                 ItemStack seed1 = new ItemStack(crops.getItemFromName(aspectName1 + "crop"));
                 ItemStack seed2 = new ItemStack(crops.getItemFromName(aspectName2 + "crop"));
                 InfusionRecipes.put(itemName, ThaumcraftApi.addInfusionCraftingRecipe("CROPRESOURCES", new ItemStack(crops.getItemFromName(fullName)), 12, (new AspectList()).add(Aspect.PLANT, 45).add(Aspect.HARVEST, 50).add(Aspect.CRAFT, 50).add(Aspect.MAGIC, 50), new ItemStack(crops.getItemFromName("fabricoseed")), new ItemStack[]{seed1, seed1, seed1, seed2, seed2, seed2, block, block, agent, agent}));
-
             }
         }
     }

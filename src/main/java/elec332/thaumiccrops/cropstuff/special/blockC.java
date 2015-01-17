@@ -25,6 +25,12 @@ public class blockC extends baseCrop {
         return this;
     }
 
+    public blockC crop(Item crop) {
+        this.crops = new ArrayList<Item>();
+        crops.add(crop);
+        return this;
+    }
+
     ArrayList<Item> crops;
 
     @SideOnly(Side.CLIENT)

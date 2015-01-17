@@ -25,5 +25,10 @@ public class arcaneRecipes {
         ArcaneRecipes.put("agent1", ThaumcraftApi.addArcaneCraftingRecipe(lib.AGENT, new ItemStack(GameRegistry.findItem(crops.ModID, "agent1")), (new AspectList()).merge(Aspect.getAspect("aqua"), 15).merge(Aspect.getAspect("ordo"), 20),  new Object[]{
                 "ABA", "CDC", " E ", 'A', new ItemStack(ConfigItems.itemResource, 1, 14), 'B', new ItemStack(Items.dye, 1, 15), 'C', new ItemStack(ConfigItems.itemNugget, 1, 5), 'D', Items.slime_ball, 'E', ConfigItems.itemBucketPure
         }));
+        for (int i = 1; i < 4; i++) {
+            ArcaneRecipes.put("treasure"+i, ThaumcraftApi.addArcaneCraftingRecipe("TREASURESEED", new ItemStack(ConfigItems.itemLootbag, 1, (i-1)), (new AspectList()).merge(Aspect.getAspect("aer"), 20).merge(Aspect.getAspect("ordo"), 20),  new Object[]{
+                    "A A", "CDC", " C ", 'A', new ItemStack(Items.string), 'C', new ItemStack(ConfigItems.itemResource, 1, 7), 'D', crops.getItemFromName("interdimtreasure"+i)
+            }));
+        }
     }
 }

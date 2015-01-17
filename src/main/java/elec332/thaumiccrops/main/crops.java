@@ -64,8 +64,7 @@ public class crops extends ModBase{
         this.config = new Configuration(FileHelper.getConfigFileElec(event));
         createTCArrayLists();
         for (String cropName : cropList) {
-            String modName = ModID;
-            new seedItem(cropName, modName, new baseItem(cropName + "crop", CTab.ElecTab, modName).setTextureName(modName + ":" + cropName + ".crop"));
+            new seedItem(cropName, ModID, new baseItem(cropName + "crop", CTab.ElecTab, ModID).setTextureName(ModID + ":" + cropName + ".crop"));
         }
         for (int i = 1; i < 8; i++) {
             new baseItem("agent" + i, null, event);
@@ -86,6 +85,11 @@ public class crops extends ModBase{
         }
         new seedC("shard", ModID, shards);
         RecourceSeeds.add("shard");
+        new seedC("treasure", ModID, new baseItem("treasureCore", CTab.ElecTab, event));
+        new baseItem("teleportCore", CTab.ElecTab, event);
+        for (int i = 1; i < 4; i++) {
+            new baseItem("interdimtreasure"+i, CTab.ElecTab, event);
+        }
 
         MCModInfo.CreateMCModInfoElec(event, "Crops!",
                 "-", "assets/elec332/logo.png", new String[]{"Elec332"});

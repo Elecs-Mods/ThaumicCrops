@@ -12,4 +12,7 @@ public class seedC extends baseSeed {
     public seedC(String name, String modID, ArrayList<Item> crops){
         super(name, modID, null, new blockC(name, modID).crop(crops));
     }
+    public seedC(String name, String modID, Item crop){
+        super(name, modID, null, new blockC(name, modID).crop(crop));
+    }
 }

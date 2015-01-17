@@ -76,6 +76,14 @@ public class pages {
             }
         }
         research.addPage(new ResearchPage(recipes.PageRecipes()));
+
+        research = new ElecResearch("TREASURESEED", StringToAspectList("messis 50, herba 100, fabrico 100, lucrum 100, iter 100"), new ResourceLocation(crops.ModID.toLowerCase(), "textures/items/treasure.seed.png"), 5, -2, 3);
+        research.addPage(new ResearchPage(infusionRecipes.InfusionRecipes.get("treasure")));
+        research.addPage(new ResearchPage(infusionRecipes.InfusionRecipes.get("teleCore")));
+        for (int i = 1; i < 4; i++) {
+            research.addPage(new ResearchPage(arcaneRecipes.ArcaneRecipes.get("treasure"+i)));
+        }
+
     }
 
     public static AspectList StringToAspectList(String aspectString) {
