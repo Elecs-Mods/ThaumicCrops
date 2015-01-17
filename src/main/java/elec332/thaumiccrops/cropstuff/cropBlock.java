@@ -19,10 +19,7 @@ import java.util.Random;
 public class cropBlock extends baseCrop {
     public cropBlock(String blockname, String modid){
         super(blockname, modid);
-        this.Type = 1;
     }
-
-    int Type;
 
     @SideOnly(Side.CLIENT)
     private IIcon[] icon;
