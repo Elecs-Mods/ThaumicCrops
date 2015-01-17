@@ -64,28 +64,28 @@ public class crops extends ModBase{
         this.config = new Configuration(FileHelper.getConfigFileElec(event));
         createTCArrayLists();
         for (String cropName : cropList) {
-            new seedItem(cropName, ModID, new baseItem(cropName + "crop", CTab.ElecTab, ModID).setTextureName(ModID + ":" + cropName + ".crop"));
+            new seedItem(cropName, ModID, new baseItem(cropName + "crop", CTab.ElecTab, ModID).setTextureName(ModID + ":" + cropName + ".crop")).setCreativeTab(CTab.ElecTab);
         }
         for (int i = 1; i < 8; i++) {
-            new baseItem("agent" + i, null, event);
+            new baseItem("agent" + i, CTab.ElecTab, event);
         }
         ArrayList<Item> shards= new ArrayList<Item>();
         for (String cropName : miscItemShardsString) {
             if(helpers.isTCShard(cropName)) {
                 String fullname = cropName + "Shard";
-                new baseItem(fullname, null, event);
+                new baseItem(fullname, CTab.ElecTab, event);
                 shards.add(getItemFromName(fullname));
             }
             if(!helpers.isTCShard(cropName)) {
                 ArrayList<Item> item = new ArrayList<Item>();
                 item.add(new baseItem(cropName + "Shard", CTab.ElecTab, event));
-                new seedC(cropName, ModID, item);
+                new seedC(cropName, ModID, item).setCreativeTab(CTab.ElecTab);
                 RecourceSeeds.add(cropName);
             }
         }
-        new seedC("shard", ModID, shards);
+        new seedC("shard", ModID, shards).setCreativeTab(CTab.ElecTab);
         RecourceSeeds.add("shard");
-        new seedC("treasure", ModID, new baseItem("treasureCore", CTab.ElecTab, event));
+        new seedC("treasure", ModID, new baseItem("treasureCore", CTab.ElecTab, event)).setCreativeTab(CTab.ElecTab);
         new baseItem("teleportCore", CTab.ElecTab, event);
         for (int i = 1; i < 4; i++) {
             new baseItem("interdimtreasure"+i, CTab.ElecTab, event);
