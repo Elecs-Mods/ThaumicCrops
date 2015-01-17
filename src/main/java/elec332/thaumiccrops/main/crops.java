@@ -30,9 +30,9 @@ import java.util.ArrayList;
 @Mod(modid = "Thaumiccrops", name = "Thaumic Crops", dependencies = modInfo.DEPENDENCIES + ";required-after:Thaumcraft", acceptedMinecraftVersions = modInfo.ACCEPTEDMCVERSIONS, useMetadata = true, canBeDeactivated = true)
 public class crops extends ModBase{
 
-
     public static Configuration config;
     public static String ModID;
+    public static logHelper logger = new logHelper(ModID);
     protected static String[] miscItemShardsString = {"air", "fire", "water", "earth", "order", "entropy", "diamond", "lapis", "amber"};
     public static ArrayList<String> RecourceSeeds = new ArrayList<String>();
     public static ArrayList<String> T1Aspects = new ArrayList<String>();
@@ -93,20 +93,21 @@ public class crops extends ModBase{
 
         MCModInfo.CreateMCModInfoElec(event, "Crops!",
                 "-", "assets/elec332/logo.png", new String[]{"Elec332"});
+        logger.info("Thaumiccrops has " + event.getModState());
     }
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
-        System.out.println(event.getModState());
         loadConfiguration(config);
+        logger.info("Thaumiccrops has " + event.getModState());
     }
 
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent event) {
-        System.out.println(event.getModState());
         OreDictionary.registerOre("blockAmber", GameRegistry.findBlock("Thaumcraft", "blockCosmeticOpaque"));
         OreDictionary.registerOre("blockShard", new ItemStack(GameRegistry.findBlock("Thaumcraft", "blockCrystal"), 1, 6));
         thaumcraft.init();
+        logger.info("Thaumiccrops has " + event.getModState());
     }
 
     void createTCArrayLists() {
