@@ -1,15 +1,12 @@
 package elec332.thaumiccrops.thaumcraft.recipes;
 
 import cpw.mods.fml.common.registry.GameRegistry;
-import elec332.core.helper.arrayHelper;
 import elec332.core.helper.oredictHelper;
 import elec332.thaumiccrops.helpers;
 import elec332.thaumiccrops.main.crops;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.oredict.OreDictionary;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.ThaumcraftApiHelper;
 import thaumcraft.api.aspects.Aspect;

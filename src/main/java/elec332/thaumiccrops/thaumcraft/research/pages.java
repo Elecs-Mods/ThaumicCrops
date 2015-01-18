@@ -7,12 +7,10 @@ import elec332.thaumiccrops.thaumcraft.lib.lib;
 import elec332.thaumiccrops.thaumcraft.recipes.arcaneRecipes;
 import elec332.thaumiccrops.thaumcraft.recipes.crucibleRecipes;
 import elec332.thaumiccrops.thaumcraft.recipes.infusionRecipes;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchPage;
-import thaumcraft.common.config.ConfigItems;
 
 /**
  * Created by Elec332 on 1-1-2015.
