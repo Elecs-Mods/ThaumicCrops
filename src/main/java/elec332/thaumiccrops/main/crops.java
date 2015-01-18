@@ -18,10 +18,10 @@ import elec332.thaumiccrops.thaumcraft.TChelper;
 import elec332.thaumiccrops.thaumcraft.thaumcraft;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.oredict.OreDictionary;
 import thaumcraft.api.aspects.Aspect;
 
+import java.io.File;
 import java.util.ArrayList;
 
 /**
@@ -30,9 +30,9 @@ import java.util.ArrayList;
 @Mod(modid = "Thaumiccrops", name = "Thaumic Crops", dependencies = modInfo.DEPENDENCIES + ";required-after:Thaumcraft", acceptedMinecraftVersions = modInfo.ACCEPTEDMCVERSIONS, useMetadata = true, canBeDeactivated = true)
 public class crops extends ModBase{
 
-    public static Configuration config;
     public static String ModID;
-    public static logHelper logger = new logHelper(ModID);
+    public static File cfgFile;
+
     protected static String[] miscItemShardsString = {"air", "fire", "water", "earth", "order", "entropy", "diamond", "lapis", "amber"};
     public static ArrayList<String> RecourceSeeds = new ArrayList<String>();
     public static ArrayList<String> T1Aspects = new ArrayList<String>();
@@ -60,8 +60,8 @@ public class crops extends ModBase{
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
+        this.cfgFile = FileHelper.getConfigFileElec(event);
         this.ModID = modInfoHelper.getModID(event);
-        this.config = new Configuration(FileHelper.getConfigFileElec(event));
         createTCArrayLists();
         for (String cropName : cropList) {
             new seedItem(cropName, ModID, new baseItem(cropName + "crop", CTab.ElecTab, ModID).setTextureName(ModID + ":" + cropName + ".crop")).setCreativeTab(CTab.ElecTab);
@@ -90,16 +90,18 @@ public class crops extends ModBase{
         for (int i = 1; i < 4; i++) {
             new baseItem("interdimtreasure"+i, CTab.ElecTab, event);
         }
+        loadConfiguration();
+
 
         MCModInfo.CreateMCModInfoElec(event, "Crops!",
                 "-", "assets/elec332/logo.png", new String[]{"Elec332"});
-        logger.info("Thaumiccrops has " + event.getModState());
+        notifyEvent(event);
     }
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
-        loadConfiguration(config);
-        logger.info("Thaumiccrops has " + event.getModState());
+        loadConfiguration();
+        notifyEvent(event);
     }
 
     @Mod.EventHandler
@@ -107,7 +109,7 @@ public class crops extends ModBase{
         OreDictionary.registerOre("blockAmber", GameRegistry.findBlock("Thaumcraft", "blockCosmeticOpaque"));
         OreDictionary.registerOre("blockShard", new ItemStack(GameRegistry.findBlock("Thaumcraft", "blockCrystal"), 1, 6));
         thaumcraft.init();
-        logger.info("Thaumiccrops has " + event.getModState());
+        notifyEvent(event);
     }
 
     void createTCArrayLists() {
@@ -124,5 +126,15 @@ public class crops extends ModBase{
 
     public static Item getItemFromName(String name){
         return GameRegistry.findItem(ModID, name);
+    }
+
+    @Override
+    public File configFile() {
+        return cfgFile;
+    }
+
+    @Override
+    public String modID(){
+        return ModID;
     }
 }
