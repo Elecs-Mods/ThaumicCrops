@@ -82,6 +82,9 @@ public class pages {
             research.addPage(new ResearchPage(arcaneRecipes.ArcaneRecipes.get("treasure"+i)));
         }
 
+        research = new ElecResearch("MONSTERSEED", StringToAspectList("messis 50, herba 100, fabrico 100, exanimis 100"), new ResourceLocation(crops.ModID.toLowerCase(), "textures/items/treasure.seed.png"), 3, -2, 4);
+        research.addPage(new ResearchPage(infusionRecipes.InfusionRecipes.get("monsterSeed")));
+        research.addPage(new ResearchPage(infusionRecipes.InfusionRecipes.get("soulCore")));
     }
 
     public static AspectList StringToAspectList(String aspectString) {

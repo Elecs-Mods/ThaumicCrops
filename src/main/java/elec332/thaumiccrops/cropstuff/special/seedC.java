@@ -15,4 +15,7 @@ public class seedC extends baseSeed {
     public seedC(String name, String modID, Item crop){
         super(name, modID, null, new blockC(name, modID).crop(crop));
     }
+    public seedC(String name, String modID){
+        super(name, modID, null, new blockC(name, modID).setMonsterSeed());
+    }
 }

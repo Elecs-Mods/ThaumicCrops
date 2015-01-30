@@ -16,7 +16,7 @@ public class recipes extends crops{
         IRecipe[] recipes = new IRecipe[miscItemShardsString.length];
         int q = 0;
         for (String itemName : miscItemShardsString) {
-            IRecipe recipe = recipeHelper.addStorageRecipe(GameRegistry.findItem(crops.ModID, itemName + "Shard"), oredictHelper.getFirstOreDictItemWithMeta(helpers.getOreDictname(itemName)));
+            IRecipe recipe = recipeHelper.addStorageRecipe(GameRegistry.findItem(crops.ModID, itemName + "Shard"), oredictHelper.getFirstOreDictItemWithMeta(helpers.getOreDictNameItem(itemName)));
             recipes[q] = recipe;
             q++;
         }
