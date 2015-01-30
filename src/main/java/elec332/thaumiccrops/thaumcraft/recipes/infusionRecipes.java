@@ -57,11 +57,11 @@ public class infusionRecipes {
             String itemName = arrayList.get(i);
             String fullName = itemName + "seed";
             ItemStack agent = new ItemStack(crops.getItemFromName("agent7"));
-            ItemStack block = oredictHelper.getFirstOreDictItemWithMeta("block"+helpers.uppercaseFirstLetter(itemName));
+            ItemStack block = oredictHelper.getFirstOreDictItemWithMeta(itemName.equalsIgnoreCase("glowstone") ? "" + itemName : "block" + helpers.uppercaseFirstLetter(itemName));
             if (itemName.equalsIgnoreCase("shard")){
                 InfusionRecipes.put(itemName, ThaumcraftApi.addInfusionCraftingRecipe("CROPRESOURCES", new ItemStack(crops.getItemFromName(fullName)), 12, (new AspectList()).add(Aspect.PLANT, 45).add(Aspect.HARVEST, 50).add(Aspect.CRAFT, 50).add(Aspect.MAGIC, 50), new ItemStack(crops.getItemFromName("fabricoseed")), new ItemStack[]{primCrop(1), primCrop(2), primCrop(3),primCrop(4), primCrop(5), primCrop(6), block, block, agent, agent}));
             } else {
-                Aspect[] aspectList = ThaumcraftApiHelper.getObjectAspects(oredictHelper.getFirstOreDictItemWithMeta("gem"+ helpers.uppercaseFirstLetter(itemName))).getAspects();
+                Aspect[] aspectList = ThaumcraftApiHelper.getObjectAspects(oredictHelper.getFirstOreDictItemWithMeta(typeOre(itemName)+ (itemName.equalsIgnoreCase("coal") ? itemName : helpers.uppercaseFirstLetter(itemName)))).getAspects();
                 String aspectName1 = aspectList[0].getTag();
                 String aspectName2 = ResTest(aspectList, 1, aspectName1);
                 ItemStack seed1 = new ItemStack(crops.getItemFromName(aspectName1 + "crop"));
@@ -69,6 +69,16 @@ public class infusionRecipes {
                 InfusionRecipes.put(itemName, ThaumcraftApi.addInfusionCraftingRecipe("CROPRESOURCES", new ItemStack(crops.getItemFromName(fullName)), 12, (new AspectList()).add(Aspect.PLANT, 45).add(Aspect.HARVEST, 50).add(Aspect.CRAFT, 50).add(Aspect.MAGIC, 50), new ItemStack(crops.getItemFromName("fabricoseed")), new ItemStack[]{seed1, seed1, seed1, seed2, seed2, seed2, block, block, agent, agent}));
             }
         }
+    }
+
+    public static String typeOre(String string){
+        if (string.equalsIgnoreCase("iron") || string.equalsIgnoreCase("gold"))
+            return "ingot";
+        if (string.equalsIgnoreCase("redstone") || string.equalsIgnoreCase("glowstone"))
+            return "dust";
+        if (string.equalsIgnoreCase("coal"))
+            return "";
+        return "gem";
     }
 
     static String ResTest(Aspect[] aspects, int i, String ifNull){

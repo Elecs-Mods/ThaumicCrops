@@ -33,7 +33,9 @@ public class crops extends ModBase{
     public static String ModID;
     public static File cfgFile;
 
-    protected static String[] miscItemShardsString = {"air", "fire", "water", "earth", "order", "entropy", "diamond", "lapis", "amber"};
+    protected static String[] miscItemShardsString = {"air", "fire", "water", "earth", "order", "entropy", "diamond", "lapis", "amber", "iron", "gold", "coal",
+     "redstone", "glowstone"
+     };
     public static ArrayList<String> RecourceSeeds = new ArrayList<String>();
     public static ArrayList<String> T1Aspects = new ArrayList<String>();
     public static ArrayList<String> T2Aspects = new ArrayList<String>();
