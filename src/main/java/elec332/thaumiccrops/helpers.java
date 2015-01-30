@@ -28,4 +28,28 @@ public class helpers {
     public static String uppercaseFirstLetter(String string){
         return string.substring(0, 1).toUpperCase() + string.substring(1);
     }
+
+    public static String getOreDictNameItem(String item){
+        if (item.equalsIgnoreCase("coal"))
+            return item;
+        return typeOre(item) + helpers.uppercaseFirstLetter(item);
+    }
+
+    public static String getOreDictNameBlock(String item){
+        if (item.equalsIgnoreCase("glowstone"))
+            return item;
+        return "block" + helpers.uppercaseFirstLetter(item);
+    }
+
+    public static String typeOre(String string){
+        if (string.equalsIgnoreCase("iron") || string.equalsIgnoreCase("gold"))
+            return "ingot";
+        if (string.equalsIgnoreCase("redstone") || string.equalsIgnoreCase("glowstone"))
+            return "dust";
+        if (string.equalsIgnoreCase("coal"))
+            return "";
+        if (isTCShard(string))
+            return "shard";
+        return "gem";
+    }
 }
