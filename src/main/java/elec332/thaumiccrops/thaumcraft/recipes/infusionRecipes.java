@@ -1,12 +1,12 @@
 package elec332.thaumiccrops.thaumcraft.recipes;
 
 import cpw.mods.fml.common.registry.GameRegistry;
-import elec332.core.helper.oredictHelper;
+import elec332.core.helper.OredictHelper;
+import elec332.core.main.ElecCore;
 import elec332.thaumiccrops.helpers;
 import elec332.thaumiccrops.main.crops;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.ThaumcraftApiHelper;
@@ -37,7 +37,7 @@ public class infusionRecipes {
         recourceSeedRecipes(crops.RecourceSeeds);
         InfusionRecipes.put("treasure", ThaumcraftApi.addInfusionCraftingRecipe("TREASURESEED", new ItemStack(crops.getItemFromName("treasureseed")), 12, (new AspectList()).add(Aspect.PLANT, 45).add(Aspect.CROP, 45).add(Aspect.CRAFT, 50).add(Aspect.TRAVEL, 100).add(Aspect.GREED, 100), new ItemStack(crops.getItemFromName("fabricoseed")), new ItemStack[]{new ItemStack(crops.getItemFromName("itercrop")), new ItemStack(crops.getItemFromName("ordocrop")), new ItemStack(crops.getItemFromName("itercrop")), new ItemStack(crops.getItemFromName("lucrumcrop")), new ItemStack(crops.getItemFromName("itercrop")), new ItemStack(crops.getItemFromName("ordocrop")), new ItemStack(crops.getItemFromName("teleportCore")), new ItemStack(Blocks.gold_block), new ItemStack(Blocks.diamond_block), new ItemStack(crops.getItemFromName("agent7")), new ItemStack(crops.getItemFromName("agent7"))}));
         InfusionRecipes.put("teleCore", ThaumcraftApi.addInfusionCraftingRecipe("TREASURESEED", new ItemStack(crops.getItemFromName("teleportCore")), 11, (new AspectList()).add(Aspect.PLANT, 45).add(Aspect.HARVEST, 50).add(Aspect.CRAFT, 50).add(Aspect.TRAVEL, 100), new ItemStack(Items.nether_star), new ItemStack[]{new ItemStack(Items.gold_nugget), new ItemStack(Items.ender_pearl), new ItemStack(Items.gold_nugget), new ItemStack(Items.ender_pearl), new ItemStack(Items.gold_nugget), new ItemStack(Items.ender_pearl), new ItemStack(Items.gold_nugget), new ItemStack(Items.ender_pearl)}));
-        InfusionRecipes.put("monsterSeed", ThaumcraftApi.addInfusionCraftingRecipe("MONSTERSEED", new ItemStack(crops.getItemFromName("monsterseed")), 18, (new AspectList()).add(Aspect.PLANT, 45).add(Aspect.HARVEST, 45).add(Aspect.CRAFT, 50).add(Aspect.MAGIC, 50).add(Aspect.DEATH, 100), new ItemStack(crops.getItemFromName("fabricoseed")), new ItemStack[]{new ItemStack(crops.getItemFromName("exanimisseed")), new ItemStack(crops.getItemFromName("exanimisseed")), new ItemStack(crops.getItemFromName("exanimisseed")), new ItemStack(crops.getItemFromName("exanimisseed")), new ItemStack(crops.getItemFromName("exanimisseed")), new ItemStack(crops.getItemFromName("exanimisseed")), new ItemStack(crops.getItemFromName("agent7")), new ItemStack(crops.getItemFromName("agent7"))}));
+        InfusionRecipes.put("monsterSeed", ThaumcraftApi.addInfusionCraftingRecipe("MONSTERSEED", new ItemStack(crops.getItemFromName("monsterseed")), 18, (new AspectList()).add(Aspect.PLANT, 45).add(Aspect.HARVEST, 45).add(Aspect.CRAFT, 50).add(Aspect.MAGIC, 50).add(Aspect.DEATH, 100), new ItemStack(crops.getItemFromName("fabricoseed")), new ItemStack[]{new ItemStack(crops.getItemFromName("exanimiscrop")), new ItemStack(crops.getItemFromName("exanimiscrop")), new ItemStack(crops.getItemFromName("exanimiscrop")), new ItemStack(crops.getItemFromName("exanimiscrop")), new ItemStack(crops.getItemFromName("exanimiscrop")), new ItemStack(crops.getItemFromName("exanimiscrop")), new ItemStack(crops.getItemFromName("soulCore")), new ItemStack(crops.getItemFromName("agent7")), new ItemStack(crops.getItemFromName("agent7"))}));
         InfusionRecipes.put("soulCore", ThaumcraftApi.addInfusionCraftingRecipe("MONSTERSEED", new ItemStack(crops.getItemFromName("soulCore")), 11, (new AspectList()).add(Aspect.WEAPON, 45).add(Aspect.UNDEAD, 45).add(Aspect.DARKNESS, 45).add(Aspect.CRAFT, 50).add(Aspect.MAGIC, 50).add(Aspect.DEATH, 100), new ItemStack(Items.nether_star), new ItemStack[]{ new ItemStack(Items.skull), new ItemStack(Items.blaze_rod), new ItemStack(Items.ghast_tear), new ItemStack(Items.ender_pearl), new ItemStack(Items.bone), new ItemStack(Items.rotten_flesh), new ItemStack(Items.spider_eye), new ItemStack(Items.string), new ItemStack(Items.arrow), new ItemStack(Items.gunpowder), new ItemStack(ConfigItems.itemZombieBrain)}));
     }
 
@@ -61,11 +61,13 @@ public class infusionRecipes {
             String itemName = arrayList.get(i);
             String fullName = itemName + "seed";
             ItemStack agent = new ItemStack(crops.getItemFromName("agent7"));
-            ItemStack block = oredictHelper.getFirstOreDictItemWithMeta(helpers.getOreDictNameBlock(itemName));
+            ItemStack block = OredictHelper.getFirstOreDictItemWithMeta(helpers.getOreDictNameBlock(itemName));
             if (itemName.equalsIgnoreCase("shard")){
                 InfusionRecipes.put(itemName, ThaumcraftApi.addInfusionCraftingRecipe("CROPRESOURCES", new ItemStack(crops.getItemFromName(fullName)), 12, (new AspectList()).add(Aspect.PLANT, 45).add(Aspect.HARVEST, 50).add(Aspect.CRAFT, 50).add(Aspect.MAGIC, 50), new ItemStack(crops.getItemFromName("fabricoseed")), new ItemStack[]{primCrop(1), primCrop(2), primCrop(3),primCrop(4), primCrop(5), primCrop(6), block, block, agent, agent}));
             } else {
-                Aspect[] aspectList = ThaumcraftApiHelper.getObjectAspects(oredictHelper.getFirstOreDictItemWithMeta(helpers.getOreDictNameItem(itemName))).getAspects();
+                if (ElecCore.Debug)
+                    crops.instance.info("Attempting to find OreDict entry for: " + itemName);
+                Aspect[] aspectList = ThaumcraftApiHelper.getObjectAspects(OredictHelper.getFirstOreDictItemWithMeta(helpers.getOreDictNameItem(itemName))).getAspects();
                 String aspectName1 = aspectList[0].getTag();
                 String aspectName2 = ResTest(aspectList, 1, aspectName1);
                 ItemStack seed1 = new ItemStack(crops.getItemFromName(aspectName1 + "crop"));

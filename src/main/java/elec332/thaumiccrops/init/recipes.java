@@ -1,8 +1,8 @@
 package elec332.thaumiccrops.init;
 
 import cpw.mods.fml.common.registry.GameRegistry;
-import elec332.core.helper.oredictHelper;
-import elec332.core.helper.recipeHelper;
+import elec332.core.helper.OredictHelper;
+import elec332.core.helper.RecipeHelper;
 import elec332.thaumiccrops.helpers;
 import elec332.thaumiccrops.main.crops;
 import net.minecraft.item.crafting.IRecipe;
@@ -16,7 +16,7 @@ public class recipes extends crops{
         IRecipe[] recipes = new IRecipe[miscItemShardsString.length];
         int q = 0;
         for (String itemName : miscItemShardsString) {
-            IRecipe recipe = recipeHelper.addStorageRecipe(GameRegistry.findItem(crops.ModID, itemName + "Shard"), oredictHelper.getFirstOreDictItemWithMeta(helpers.getOreDictNameItem(itemName)));
+            IRecipe recipe = RecipeHelper.addStorageRecipe(GameRegistry.findItem(crops.ModID, itemName + "Shard"), OredictHelper.getFirstOreDictItemWithMeta(helpers.getOreDictNameItem(itemName)));
             recipes[q] = recipe;
             q++;
         }

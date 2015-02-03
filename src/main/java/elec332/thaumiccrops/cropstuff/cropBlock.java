@@ -88,6 +88,6 @@ public class cropBlock extends baseCrop {
     @Override
     public boolean func_149851_a(World p_149851_1_, int p_149851_2_, int p_149851_3_, int p_149851_4_, boolean p_149851_5_)
     {
-        return false;
+        return elec332.thaumiccrops.main.crops.developmentEnvironment && super.func_149851_a(p_149851_1_, p_149851_2_, p_149851_3_, p_149851_4_, p_149851_5_);
     }
 }

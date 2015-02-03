@@ -50,7 +50,7 @@ public class crops extends ModBase{
     public static ArrayList<String> compoundAspects = TChelper.getAspectTag(Aspect.getCompoundAspects());
 
     @SuppressWarnings("unchecked")
-    public static ArrayList<String> cropList = arrayHelper.mergeArrays(primAspects, compoundAspects);
+    public static ArrayList<String> cropList = ArrayHelper.mergeArrays(primAspects, compoundAspects);
 
     @SidedProxy(clientSide = modInfo.CLIENTPROXY, serverSide = modInfo.COMMONPROXY)
     public static CommonProxy proxy;
@@ -61,7 +61,7 @@ public class crops extends ModBase{
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         this.cfgFile = FileHelper.getConfigFileElec(event);
-        this.ModID = modInfoHelper.getModID(event);
+        this.ModID = ModInfoHelper.getModID(event);
         createTCArrayLists();
         for (String cropName : cropList) {
             new seedItem(cropName, ModID, new baseItem(cropName + "crop", CTab.ElecTab, ModID).setTextureName(ModID + ":" + cropName + ".crop")).setCreativeTab(CTab.ElecTab);
@@ -79,6 +79,7 @@ public class crops extends ModBase{
             if(!helpers.isTCShard(cropName)) {
                 ArrayList<Item> item = new ArrayList<Item>();
                 item.add(new baseItem(cropName + "Shard", CTab.ElecTab, event));
+                //Item item = new baseItem(cropName + "Shard", CTab.ElecTab, event);
                 new seedC(cropName, ModID, item).setCreativeTab(CTab.ElecTab);
                 RecourceSeeds.add(cropName);
             }
@@ -120,12 +121,12 @@ public class crops extends ModBase{
         for (int i = 0; i < 10; i++) {
             this.T1Aspects.add(compoundAspects.get(i));
         }
-        this.T2Aspects = stringHelper.convertStringArrayToArraylist(new String[]{"bestia", "fames", "herba", "iter", "limus", "metallum", "mortuus", "praecantatio", "sano", "tenebrae", "vinculum", "volatus"});
-        this.T3Aspects = stringHelper.convertStringArrayToArraylist(new String[]{"alienis", "arbor", "auram", "corpus", "exanimis", "spiritus", "vitium"});
-        this.T4Aspects = stringHelper.convertStringArrayToArraylist(new String[]{"cognitio", "sensus"});
+        this.T2Aspects = StringHelper.convertStringArrayToArraylist(new String[]{"bestia", "fames", "herba", "iter", "limus", "metallum", "mortuus", "praecantatio", "sano", "tenebrae", "vinculum", "volatus"});
+        this.T3Aspects = StringHelper.convertStringArrayToArraylist(new String[]{"alienis", "arbor", "auram", "corpus", "exanimis", "spiritus", "vitium"});
+        this.T4Aspects = StringHelper.convertStringArrayToArraylist(new String[]{"cognitio", "sensus"});
         this.T5Aspects.add("humanus");
-        this.T6Aspects = stringHelper.convertStringArrayToArraylist(new String[]{"instrumentum", "lucrum", "messis", "perfodio"});
-        this.T7Aspects = stringHelper.convertStringArrayToArraylist(new String[]{"fabrico", "machina", "meto", "pannus", "telum", "tutamen"});
+        this.T6Aspects = StringHelper.convertStringArrayToArraylist(new String[]{"instrumentum", "lucrum", "messis", "perfodio"});
+        this.T7Aspects = StringHelper.convertStringArrayToArraylist(new String[]{"fabrico", "machina", "meto", "pannus", "telum", "tutamen"});
     }
 
     public static Item getItemFromName(String name){
