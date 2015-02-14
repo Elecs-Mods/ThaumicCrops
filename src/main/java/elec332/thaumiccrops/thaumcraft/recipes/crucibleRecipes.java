@@ -1,6 +1,7 @@
 package elec332.thaumiccrops.thaumcraft.recipes;
 
 import cpw.mods.fml.common.registry.GameRegistry;
+import elec332.thaumiccrops.init.Data;
 import elec332.thaumiccrops.main.crops;
 import elec332.thaumiccrops.thaumcraft.lib.lib;
 import net.minecraft.init.Items;
@@ -21,8 +22,8 @@ public class crucibleRecipes {
     public static HashMap<String, CrucibleRecipe> CrucibleRecipes = new HashMap();
 
     public static void init(){
-        for (int i = 0; i < crops.primAspects.size(); i++) {
-            String aspect = crops.primAspects.get(i);
+        for (int i = 0; i < Data.primAspects.size(); i++) {
+            String aspect = Data.primAspects.get(i);
             ItemStack thisItem = new ItemStack(GameRegistry.findItem(crops.ModID, aspect+"seed"));
             CrucibleRecipes.put(aspect, ThaumcraftApi.addCrucibleRecipe(lib.PRIMALSEEDS, thisItem, new ItemStack(Items.wheat_seeds), (new AspectList()).merge(Aspect.MAGIC, 10).merge(Aspect.getAspect(aspect), 10)));
         }

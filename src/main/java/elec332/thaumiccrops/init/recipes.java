@@ -10,7 +10,7 @@ import net.minecraft.item.crafting.IRecipe;
 /**
  * Created by Elec332 on 4-1-2015.
  */
-public class recipes extends crops{
+public class recipes extends Data{
 
     public static IRecipe[] PageRecipes(){
         IRecipe[] recipes = new IRecipe[miscItemShardsString.length];
