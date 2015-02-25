@@ -24,7 +24,7 @@ import java.io.File;
 /**
  * Created by Elec332 on 29-12-2014.
  */
-@Mod(modid = "Thaumiccrops", name = "Thaumic Crops", dependencies = modInfo.DEPENDENCIES + ";required-after:Thaumcraft", acceptedMinecraftVersions = modInfo.ACCEPTEDMCVERSIONS, useMetadata = true, canBeDeactivated = true)
+@Mod(modid = "ThaumicCrops", name = "Thaumic Crops", dependencies = modInfo.DEPENDENCIES + ";required-after:Thaumcraft", acceptedMinecraftVersions = modInfo.ACCEPTEDMCVERSIONS, useMetadata = true, canBeDeactivated = true)
 public class crops extends ModBase{
 
     public static String ModID;
@@ -33,7 +33,7 @@ public class crops extends ModBase{
     @SidedProxy(clientSide = modInfo.CLIENTPROXY, serverSide = modInfo.COMMONPROXY)
     public static CommonProxy proxy;
 
-    @Mod.Instance("Thaumiccrops")
+    @Mod.Instance("ThaumicCrops")
     public static crops instance;
 
     @Mod.EventHandler
