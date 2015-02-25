@@ -38,8 +38,8 @@ public class crops extends ModBase{
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        this.cfgFile = FileHelper.getConfigFileElec(event);
-        this.ModID = ModInfoHelper.getModID(event);
+        cfgFile = FileHelper.getConfigFileElec(event);
+        ModID = ModInfoHelper.getModID(event);
         Data.INSTANCE.createTCArrayLists();
         loadConfiguration();
         Seeds.init(event);

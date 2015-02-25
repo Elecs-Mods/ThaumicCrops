@@ -22,7 +22,7 @@ public class helpers {
     }
 
     public static void addAspectsSeed(Item item, AspectList aspectList){
-        ThaumcraftApi.registerObjectTag(new ItemStack(item), (new AspectList()).add(Aspect.PLANT, 1).add(aspectList));
+        //ThaumcraftApi.registerObjectTag(new ItemStack(item), (new AspectList()).add(Aspect.PLANT, 1).add(aspectList));
     }
 
     public static String uppercaseFirstLetter(String string){
