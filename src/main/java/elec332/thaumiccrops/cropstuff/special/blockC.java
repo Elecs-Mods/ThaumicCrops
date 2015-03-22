@@ -3,6 +3,7 @@ package elec332.thaumiccrops.cropstuff.special;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import elec332.core.util.blocks.baseCrop;
+import elec332.thaumiccrops.main.ThaumicCrops;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -93,6 +94,6 @@ public class blockC extends baseCrop {
 
     @Override
     public boolean func_149851_a(World p_149851_1_, int p_149851_2_, int p_149851_3_, int p_149851_4_, boolean p_149851_5_) {
-        return elec332.thaumiccrops.main.crops.developmentEnvironment && super.func_149851_a(p_149851_1_, p_149851_2_, p_149851_3_, p_149851_4_, p_149851_5_);
+        return ThaumicCrops.developmentEnvironment && super.func_149851_a(p_149851_1_, p_149851_2_, p_149851_3_, p_149851_4_, p_149851_5_);
     }
 }

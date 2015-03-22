@@ -1,5 +1,6 @@
 package elec332.thaumiccrops.cropstuff.special;
 
+import elec332.thaumiccrops.main.ThaumicCrops;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -34,7 +35,7 @@ public class MonsterSeed extends blockC{
                 }
                 if(monster){
                     if (random.nextInt(10) == 1)
-                        ret.add(new ItemStack(elec332.thaumiccrops.main.crops.getItemFromName("witherShard")));
+                        ret.add(new ItemStack(ThaumicCrops.getItemFromName("witherShard")));
                     if (random.nextInt(10) == 1)
                         ret.add(new ItemStack(Items.experience_bottle));
                     if (random.nextInt(4) == 1)

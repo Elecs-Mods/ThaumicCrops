@@ -9,10 +9,10 @@ import java.util.ArrayList;
  */
 public class TChelper {
 
-    public static ArrayList getAspectTag(ArrayList<Aspect> aspects){
+    public static ArrayList<String> getAspectTag(ArrayList<Aspect> aspects){
         ArrayList<String> arrayList= new ArrayList<String>();
-        for (int i = 0; i < aspects.size(); i++) {
-            arrayList .add(aspects.get(i).getTag());
+        for (Aspect aspect : aspects) {
+            arrayList.add(aspect.getTag());
         }
         return arrayList;
     }

@@ -25,7 +25,7 @@ import java.io.File;
  * Created by Elec332 on 29-12-2014.
  */
 @Mod(modid = "ThaumicCrops", name = "Thaumic Crops", dependencies = modInfo.DEPENDENCIES + ";required-after:Thaumcraft", acceptedMinecraftVersions = modInfo.ACCEPTEDMCVERSIONS, useMetadata = true, canBeDeactivated = true)
-public class crops extends ModBase{
+public class ThaumicCrops extends ModBase{
 
     public static String ModID;
     public static File cfgFile;
@@ -34,7 +34,7 @@ public class crops extends ModBase{
     public static CommonProxy proxy;
 
     @Mod.Instance("ThaumicCrops")
-    public static crops instance;
+    public static ThaumicCrops instance;
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {

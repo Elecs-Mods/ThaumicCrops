@@ -2,8 +2,8 @@ package elec332.thaumiccrops.thaumcraft.recipes;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import elec332.thaumiccrops.init.Data;
-import elec332.thaumiccrops.main.crops;
-import elec332.thaumiccrops.thaumcraft.lib.lib;
+import elec332.thaumiccrops.main.ThaumicCrops;
+import elec332.thaumiccrops.thaumcraft.lib.Lib;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import thaumcraft.api.ThaumcraftApi;
@@ -24,11 +24,11 @@ public class crucibleRecipes {
     public static void init(){
         for (int i = 0; i < Data.primAspects.size(); i++) {
             String aspect = Data.primAspects.get(i);
-            ItemStack thisItem = new ItemStack(GameRegistry.findItem(crops.ModID, aspect+"seed"));
-            CrucibleRecipes.put(aspect, ThaumcraftApi.addCrucibleRecipe(lib.PRIMALSEEDS, thisItem, new ItemStack(Items.wheat_seeds), (new AspectList()).merge(Aspect.MAGIC, 10).merge(Aspect.getAspect(aspect), 10)));
+            ItemStack thisItem = new ItemStack(GameRegistry.findItem(ThaumicCrops.ModID, aspect+"seed"));
+            CrucibleRecipes.put(aspect, ThaumcraftApi.addCrucibleRecipe(Lib.PRIMALSEEDS, thisItem, new ItemStack(Items.wheat_seeds), (new AspectList()).merge(Aspect.MAGIC, 10).merge(Aspect.getAspect(aspect), 10)));
         }
         for (int i = 2; i < 8; i++) {
-            CrucibleRecipes.put("agent"+i, ThaumcraftApi.addCrucibleRecipe(lib.AGENT, new ItemStack(GameRegistry.findItem(crops.ModID, "agent"+i)), new ItemStack(GameRegistry.findItem(crops.ModID, "agent"+(i-1))), (new AspectList()).merge(Aspect.MAGIC, 10).merge(Aspect.ORDER, 10).merge(Aspect.SLIME, 10)) );
+            CrucibleRecipes.put("agent"+i, ThaumcraftApi.addCrucibleRecipe(Lib.AGENT, new ItemStack(GameRegistry.findItem(ThaumicCrops.ModID, "agent"+i)), new ItemStack(GameRegistry.findItem(ThaumicCrops.ModID, "agent"+(i-1))), (new AspectList()).merge(Aspect.MAGIC, 10).merge(Aspect.ORDER, 10).merge(Aspect.SLIME, 10)) );
         }
     }
 }
