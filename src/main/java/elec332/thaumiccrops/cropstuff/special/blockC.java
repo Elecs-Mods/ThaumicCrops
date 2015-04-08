@@ -2,7 +2,7 @@ package elec332.thaumiccrops.cropstuff.special;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import elec332.core.util.blocks.baseCrop;
+import elec332.core.baseclasses.block.BaseCrop;
 import elec332.thaumiccrops.main.ThaumicCrops;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.Item;
@@ -16,7 +16,7 @@ import java.util.Random;
 /**
  * Created by Elec332 on 6-1-2015.
  */
-public class blockC extends baseCrop {
+public class blockC extends BaseCrop {
     public blockC(String blockname, String modid) {
         super(blockname, modid);
     }
