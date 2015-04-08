@@ -10,7 +10,7 @@ import elec332.core.helper.FileHelper;
 import elec332.core.helper.MCModInfo;
 import elec332.core.helper.ModInfoHelper;
 import elec332.core.modBaseUtils.ModBase;
-import elec332.core.modBaseUtils.modInfo;
+import elec332.core.modBaseUtils.ModInfo;
 import elec332.core.proxies.CommonProxy;
 import elec332.thaumiccrops.init.Data;
 import elec332.thaumiccrops.init.Seeds;
@@ -24,13 +24,13 @@ import java.io.File;
 /**
  * Created by Elec332 on 29-12-2014.
  */
-@Mod(modid = "ThaumicCrops", name = "Thaumic Crops", dependencies = modInfo.DEPENDENCIES + ";required-after:Thaumcraft", acceptedMinecraftVersions = modInfo.ACCEPTEDMCVERSIONS, useMetadata = true, canBeDeactivated = true)
+@Mod(modid = "ThaumicCrops", name = "Thaumic Crops", dependencies = ModInfo.DEPENDENCIES + ";required-after:Thaumcraft", acceptedMinecraftVersions = ModInfo.ACCEPTEDMCVERSIONS, useMetadata = true, canBeDeactivated = true)
 public class ThaumicCrops extends ModBase{
 
     public static String ModID;
     public static File cfgFile;
 
-    @SidedProxy(clientSide = modInfo.CLIENTPROXY, serverSide = modInfo.COMMONPROXY)
+    @SidedProxy(clientSide = ModInfo.CLIENTPROXY, serverSide = ModInfo.COMMONPROXY)
     public static CommonProxy proxy;
 
     @Mod.Instance("ThaumicCrops")
